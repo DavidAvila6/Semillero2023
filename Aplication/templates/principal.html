@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Template</title>
+</head>
+<body>
+    <h1>Hola, este es mi template</h1>
+    <p>¡Bienvenido a mi página!</p>
+
+    <!-- Botón para ir al formulario -->
+    <a href="{% url 'agregar_usuario' %}"><button>Ir al Formulario</button></a>
+
+    <!-- Botón para ir a la lista de usuarios -->
+    <a href="{% url 'listar_usuarios' %}"><button>Ir a la Lista de Usuarios</button></a>
+
+    <a href="{% url 'verificar_carnet' %}"><button>Verificar Carnet</button></a>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Carnet</title>
+</head>
+<body>
+    <h1>Verificar Carnet</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="carnet">Ingrese el número de carnet:</label>
+        <input type="text" id="carnet" name="carnet">
+        <button type="submit">Verificar</button>
+    </form>
+    <p>{{ mensaje }}</p>
+    <a href="{% url 'principal' %}"><button>Ir a la Página Principal</button></a>
+</body>
+</html>
