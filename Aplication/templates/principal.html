@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Template</title>
+    <title>Bienvenido a mi Página</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    
 </head>
 <body>
-    <h1>Hola, este es mi template</h1>
-    <p>¡Bienvenido a mi página!</p>
+    <h1>Bienvenido a mi Página</h1>
 
-    <!-- Botón para ir al formulario -->
-    <a href="{% url 'agregar_usuario' %}"><button>Ir al Formulario</button></a>
+    
+    <a href="{% url 'agregar_usuario' %}">Agregar usuario</a>
 
-    <!-- Botón para ir a la lista de usuarios -->
-    <a href="{% url 'listar_usuarios' %}"><button>Ir a la Lista de Usuarios</button></a>
+    
+    <a href="{% url 'listar_usuarios' %}">Ir a la Lista de Usuarios</a>
 
-    <a href="{% url 'verificar_carnet' %}"><button>Verificar Carnet</button></a>
+    
+    <a href="{% url 'verificar_carnet' %}">Verificar Carnet</a>
+
+    
 </body>
 </html>
