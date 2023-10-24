@@ -1,13 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Usuario</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Formulario de Usuario{% endblock %}
+
+{% block content %}
     <div class="container">
         <h1>Formulario de Usuario</h1>
         <form method="post" class="user-form">
@@ -20,5 +15,4 @@
         <br><br><br>
         <a href="{% url 'principal' %}" class="button">Ir a la Página Principal</a>
     </div>
-</body>
-</html>
+{% endblock %}

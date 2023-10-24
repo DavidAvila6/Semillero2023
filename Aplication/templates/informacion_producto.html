@@ -1,13 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Información de Producto</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Información de Producto{% endblock %}
+
+{% block content %}
     <div class="container">
         <h1>Información de Producto</h1>
         <ul>
@@ -17,5 +12,4 @@
         </ul>
         <a href="{% url 'listar_productos' %}" class="button">Volver a la Lista de Productos</a>
     </div>
-</body>
-</html>
+{% endblock %}

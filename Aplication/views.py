@@ -1,8 +1,8 @@
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.shortcuts import render
-from .models import Producto, Usuario
-from .forms import UsuarioForm,ProductoForm
+from .models import Movimiento, Producto, Usuario
+from .forms import UsuarioForm,ProductoForm,EntregaProductoForm,Movimiento
 
 def agregar_usuario(request):
     if request.method == 'POST':
@@ -47,7 +47,7 @@ def agregar_producto(request):
         form = ProductoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('lista_productos')
+            return redirect('listar_productos')
     else:
         form = ProductoForm()
     return render(request, 'agregar_producto.html', {'form': form})
@@ -59,3 +59,23 @@ def listar_productos(request):
 def informacion_producto(request, producto_id):
     producto = get_object_or_404(Producto, pk=producto_id)
     return render(request, 'informacion_producto.html', {'producto': producto})
+
+def entregar_producto(request):
+    if request.method == 'POST':
+        form = EntregaProductoForm(request.POST)
+        if form.is_valid():
+            form.save()  # Guardar la entrega del producto en la base de datos
+            return redirect('lista_movimientos')  # Redirigir a la lista de movimientos
+    else:
+        form = EntregaProductoForm()
+    
+    return render(request, 'entregar_producto.html', {'form': form})
+
+def lista_movimientos(request):
+    movimientos = Movimiento.objects.all()
+    return render(request, 'lista_movimientos.html', {'movimientos': movimientos})
+
+def informacion_movimiento(request, movimiento_id):
+    movimiento = Movimiento.objects.select_related('usuario', 'producto').get(pk=movimiento_id)
+    context = {'movimiento': movimiento}
+    return render(request, 'informacion_movimiento.html', context)

@@ -1,19 +1,14 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEMILLERO</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
     <h1>SEMILLERO</h1>
     <p>¡Bienvenido a la página!</p>
 
     <div class="button-container">
         
         <a href="{% url 'agregar_usuario' %}" class="button">Agregar Usuario</a>
+
+        <a href="{% url 'entregar_producto' %}" class="button">Entregar Producto</a>
 
         <a href="{% url 'listar_usuarios' %}" class="button">Ir a la Lista de Usuarios</a>
 
@@ -23,7 +18,8 @@
 
         <a href="{% url 'listar_productos' %}" class="button">Lista de Productos</a>
 
+
+
         
     </div>
-</body>
-</html>
+    {% endblock %}

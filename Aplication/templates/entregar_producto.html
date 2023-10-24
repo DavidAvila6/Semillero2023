@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Entregar Producto{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Entregar Producto</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="button">Entregar Producto</button>
+        </form>
+        <a href="{% url 'lista_movimientos' %}" class="button">Ir a la Lista de Movimientos</a>
+    </div>
+{% endblock %}

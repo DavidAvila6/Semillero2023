@@ -1,20 +1,14 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Producto</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Agregar Producto{% endblock %}
+
+{% block content %}
     <h1>Agregar Producto</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="button">Guardar</button>
-        <br><br><br>
     </form>
+    <br><br><br>
     <a href="{% url 'principal' %}" class="button">Ir a la Página Principal</a>
-</body>
-</html>
+{% endblock %}

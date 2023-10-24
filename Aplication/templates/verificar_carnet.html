@@ -1,13 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificar Carnet</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Verificar Carnet{% endblock %}
+
+{% block content %}
     <h1>Verificar Carnet</h1>
     <form method="post">
         {% csrf_token %}
@@ -16,6 +11,4 @@
         <button class="button" type="submit">Verificar</button>
     </form>
     <p>{{ mensaje }}</p>
-    <a href="{% url 'principal' %}"><button class="button">Ir a la Página Principal</button></a>
-</body>
-</html>
+{% endblock %}

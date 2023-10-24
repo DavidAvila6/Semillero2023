@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Movimientos{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Lista de Movimientos</h1>
+        <ul class="user-list">
+            {% for movimiento in movimientos %}
+                <li>
+                    <a href="{% url 'informacion_movimiento' movimiento.id %}" class="button">
+                        <strong>Usuario:</strong> {{ movimiento.usuario.nombre }}<br>
+                        <strong>Producto:</strong> {{ movimiento.producto.nombre }}<br>
+                        <strong>Fecha de Entrega:</strong> {{ movimiento.hora_entrega }}
+                    </a>
+                    <br><br><br>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'entregar_producto' %}" class="button">Entregar Producto</a>
+        <a href="{% url 'principal' %}" class="button">Ir a la Página Principal</a>
+    </div>
+{% endblock %}

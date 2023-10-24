@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Información de Movimiento{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="info-heading">Información de Movimiento</h1>
+
+        <div class="info-container">
+            <div class="info-section">
+                <h2 class="section-heading">Información del Usuario</h2>
+                <ul class="info-list">
+                    <li><strong>Nombre:</strong> {{ movimiento.usuario.nombre }}</li>
+                    <li><strong>Carrera:</strong> {{ movimiento.usuario.carrera }}</li>
+                    <li><strong>Carnet:</strong> {{ movimiento.usuario.carnet }}</li>
+                    <li><strong>Correo Electrónico:</strong> {{ movimiento.usuario.correo_electronico }}</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2 class="section-heading">Información del Producto</h2>
+                <ul class="info-list">
+                    <li><strong>Nombre del Producto:</strong> {{ movimiento.producto.nombre }}</li>
+                    <li><strong>Marca:</strong> {{ movimiento.producto.marca }}</li>
+                    <li><strong>Código de Barras:</strong> {{ movimiento.producto.codigo }}</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2 class="section-heading">Detalles del Movimiento</h2>
+                <ul class="info-list">
+                    <li><strong>Fecha de Entrega:</strong> {{ movimiento.hora_entrega }}</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="{% url 'lista_movimientos' %}" class="button">Volver a la Lista de Movimientos</a>
+    </div>
+{% endblock %}

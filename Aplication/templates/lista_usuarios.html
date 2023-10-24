@@ -1,20 +1,12 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Usuarios</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
-</head>
-<body>
-    <div class="container">
-        <h1>Lista de Usuarios</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Lista de Usuarios</h1>
+    <div class="users-container">
         <ul class="user-list">
             {% for usuario in usuarios %}
                 <li>
                     <a href="{% url 'informacion_usuario' usuario.id %}" class="button">
-                    
                         {{ usuario.nombre }} - {{ usuario.carrera }}
                     </a>
                     <br><br><br>
@@ -23,5 +15,4 @@
         </ul>
         <a href="{% url 'principal' %}" class="button">Ir a la Página Principal</a>
     </div>
-</body>
-</html>
+{% endblock %}
