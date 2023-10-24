@@ -12,13 +12,9 @@
         <div class="navbar-container">
             <h1 class="navbar-title">SEMILLERO</h1>
             <ul class="navbar-menu">
-                <li class="navbar-item"><a href="{% url 'agregar_usuario' %}" class="button">Agregar Usuario</a></li>
-                <li class="navbar-item"><a href="{% url 'entregar_producto' %}" class="button">Entregar Producto</a></li>
-                <li class="navbar-item"><a href="{% url 'listar_usuarios' %}" class="button">Lista de Usuarios</a></li>
-                <li class="navbar-item"><a href="{% url 'verificar_carnet' %}" class="button">Verificar Carnet</a></li>
-                <li class="navbar-item"><a href="{% url 'agregar_producto' %}" class="button">Agregar Producto</a></li>
-                <li class="navbar-item"><a href="{% url 'listar_productos' %}" class="button">Lista de Productos</a></li>
-                <li class="navbar-item"><a href="{% url 'lista_movimientos' %}" class="button">Lista de Movimientos</a></li>
+                <a href="{% url 'usuarios' %}" class="button">Usuarios</a>
+                <a href="{% url 'productos' %}" class="button">Productos</a>
+                <a href="{% url 'movimientos' %}" class="button">Movimientos</a>
             </ul>
         </div>
     </nav>

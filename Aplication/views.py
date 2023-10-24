@@ -1,8 +1,17 @@
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.shortcuts import render
-from .models import Movimiento, Producto, Usuario
-from .forms import UsuarioForm,ProductoForm,EntregaProductoForm,Movimiento
+from .models import Historial, Movimiento, Producto, Usuario
+from .forms import DevolucionProductoForm, UsuarioForm,ProductoForm,EntregaProductoForm,Movimiento
+
+def usuarios(request):
+    return render(request, 'usuarios.html')
+
+def productos(request):
+    return render(request, 'productos.html')
+
+def movimientos(request):
+    return render(request, 'movimientos.html')
 
 def agregar_usuario(request):
     if request.method == 'POST':
@@ -71,6 +80,25 @@ def entregar_producto(request):
     
     return render(request, 'entregar_producto.html', {'form': form})
 
+def devolver_producto(request):
+    if request.method == 'POST':
+        form = DevolucionProductoForm(request.POST)
+        if form.is_valid():
+            codigo_producto = form.cleaned_data['codigo_producto']
+            
+            # Verifica si el código del producto está en la lista de movimientos
+            try:
+                movimiento = Movimiento.objects.get(producto__codigo=codigo_producto)
+                movimiento.delete()  # Elimina el registro de movimiento
+                return redirect('lista_movimientos')
+            except Movimiento.DoesNotExist:
+                # El código del producto no se encontró en los movimientos
+                return render(request, 'devolver_producto.html', {'form': form, 'error': 'Producto no encontrado en la lista de movimientos'})
+    else:
+        form = DevolucionProductoForm()
+    
+    return render(request, 'devolver_producto.html', {'form': form})
+
 def lista_movimientos(request):
     movimientos = Movimiento.objects.all()
     return render(request, 'lista_movimientos.html', {'movimientos': movimientos})
@@ -79,3 +107,8 @@ def informacion_movimiento(request, movimiento_id):
     movimiento = Movimiento.objects.select_related('usuario', 'producto').get(pk=movimiento_id)
     context = {'movimiento': movimiento}
     return render(request, 'informacion_movimiento.html', context)
+
+def historial_movimientos(request):
+    historial = Historial.objects.all()
+
+    return render(request, 'historial_movimientos.html', {'historial': historial})

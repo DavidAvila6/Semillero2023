@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Historial de Movimientos{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Historial de Movimientos</h1>
+        <ul class="movement-list">
+            {% for movimiento in historial %}
+                <li>
+                    <strong>Tipo:</strong> {{ movimiento.tipo }}<br>
+                    <strong>Usuario:</strong> {{ movimiento.usuario.username }}<br>
+                    <strong>Producto:</strong> {{ movimiento.producto.nombre }}<br>
+                    <strong>Fecha de Movimiento:</strong> {{ movimiento.fecha_movimiento }}
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'principal' %}" class="button">Ir a la Página Principal</a>
+    </div>
+{% endblock %}

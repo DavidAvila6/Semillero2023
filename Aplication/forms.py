@@ -1,5 +1,5 @@
 from django import forms
-from .models import Usuario,Producto,Movimiento
+from .models import DevolucionProducto, Usuario,Producto,Movimiento
 
 class UsuarioForm(forms.ModelForm):
     class Meta:
@@ -15,3 +15,8 @@ class EntregaProductoForm(forms.ModelForm):
     class Meta:
         model = Movimiento
         fields = ['usuario', 'producto']
+
+class DevolucionProductoForm(forms.ModelForm):
+    class Meta:
+        model = DevolucionProducto
+        fields = ['codigo_producto']

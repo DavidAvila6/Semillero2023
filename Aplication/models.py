@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Usuario(models.Model):
     id = models.AutoField(primary_key=True)
@@ -22,6 +23,25 @@ class Movimiento(models.Model):
     usuario = models.ForeignKey('Usuario', on_delete=models.CASCADE)
     producto = models.ForeignKey('Producto', on_delete=models.CASCADE)
     hora_entrega = models.DateTimeField(auto_now_add=True)
+    
 
     def __str__(self):
         return f'Movimiento de {self.usuario} para {self.producto} a las {self.hora_entrega}'
+
+class DevolucionProducto(models.Model):
+    codigo_producto = models.CharField(max_length=50)
+
+class Historial(models.Model):
+    TIPO_MOVIMIENTO = (
+        ('entrega', 'Entrega'),
+        ('devolucion', 'Devolución'),
+    )
+    
+    tipo = models.CharField(max_length=10, choices=TIPO_MOVIMIENTO)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    fecha_movimiento = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.tipo} - {self.producto} - {self.usuario}"
+

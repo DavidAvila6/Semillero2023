@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Usuarios{% endblock %}
+
+{% block content %}
+    <h2>Opciones de Usuarios</h2>
+    <div class="user-buttons">
+        <a href="{% url 'agregar_usuario' %}" class="button">Agregar Usuario</a>
+        <a href="{% url 'listar_usuarios' %}" class="button">Lista de Usuarios</a>
+        <a href="{% url 'verificar_carnet' %}" class="button">Verificar Carnet</a>
+        <!-- Agregar más botones de usuario según sea necesario -->
+    </div>
+{% endblock %}
