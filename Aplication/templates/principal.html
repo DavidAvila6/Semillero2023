@@ -1,26 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido a mi Página</title>
-
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    
+    <title>SEMILLERO</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
 </head>
 <body>
-    <h1>Bienvenido a mi Página</h1>
+    <h1>SEMILLERO</h1>
+    <p>¡Bienvenido a la página!</p>
 
-    
-    <a href="{% url 'agregar_usuario' %}">Agregar usuario</a>
+    <div class="button-container">
+        
+        <a href="{% url 'agregar_usuario' %}" class="button">Agregar Usuario</a>
 
-    
-    <a href="{% url 'listar_usuarios' %}">Ir a la Lista de Usuarios</a>
+        <a href="{% url 'listar_usuarios' %}" class="button">Ir a la Lista de Usuarios</a>
 
-    
-    <a href="{% url 'verificar_carnet' %}">Verificar Carnet</a>
-
-    
+        <a href="{% url 'verificar_carnet' %}" class="button">Verificar Carnet</a>
+        
+    </div>
 </body>
 </html>

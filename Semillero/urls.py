@@ -25,6 +25,7 @@ urlpatterns = [
     path('agregar-usuario/', views.agregar_usuario, name='agregar_usuario'),
     path('listar-usuarios/', views.listar_usuarios, name='listar_usuarios'),
     path('verificar-carnet/', views.verificar_carnet, name='verificar_carnet'),
+    path('usuario/<int:usuario_id>/', views.informacion_usuario, name='informacion_usuario'),
     
     
 

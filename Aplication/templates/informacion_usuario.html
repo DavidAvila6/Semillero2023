@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información de Usuario</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/usuario.css' %}">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Información de Usuario</h1>
+        <ul>
+            <li><strong>Nombre:</strong> {{ usuario.nombre }}</li>
+            <li><strong>Carrera:</strong> {{ usuario.carrera }}</li>
+            <li><strong>Carnet:</strong> {{ usuario.carnet }}</li>
+            <li><strong>Correo Electrónico:</strong> {{ usuario.correo_electronico }}</li>
+        </ul>
+        <a href="{% url 'listar_usuarios' %}" class="button">Volver a la Lista de Usuarios</a>
+    </div>
+</body>
+</html>

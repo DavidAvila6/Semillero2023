@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.shortcuts import render
 from .models import Usuario
 from .forms import UsuarioForm
@@ -23,6 +23,10 @@ def listar_usuarios(request):
 
 def principal(request):
     return render(request, 'principal.html')
+
+def informacion_usuario(request, usuario_id):
+    usuario = get_object_or_404(Usuario, pk=usuario_id)
+    return render(request, 'informacion_usuario.html', {'usuario': usuario})
 
 def verificar_carnet(request):
     mensaje = None

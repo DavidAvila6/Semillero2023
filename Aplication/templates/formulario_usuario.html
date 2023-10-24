@@ -1,20 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Usuario</title>
-    {% load static %}
-<link rel="stylesheet" href="{% static 'css/base.css' %}">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
 </head>
 <body>
-    <h1>Formulario de Usuario</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar</button>
-    </form>
-    <a href="{% url 'principal' %}"><button>Ir a la Página Principal</button></a>
+    <div class="container">
+        <h1>Formulario de Usuario</h1>
+        <form method="post" class="user-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <button class="button" type="submit">Guardar</button>
+            <br>
+        </form>
+        <br><br><br>
+        <a href="{% url 'principal' %}" class="button">Ir a la Página Principal</a>
+    </div>
 </body>
 </html>
