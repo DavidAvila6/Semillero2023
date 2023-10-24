@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Productos</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Productos</h1>
+        <ul class="user-list">
+            {% for producto in productos %}
+                <li>
+                    <a href="{% url 'informacion_producto' producto.id %}" class="button">
+                        {{ producto.nombre }} - {{ producto.marca }} - {{ producto.codigo }}
+                    </a>
+                    <br><br><br>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'agregar_producto' %}" class="button">Agregar Producto</a>
+        <br><br><br>
+        <a href="{% url 'principal' %}" class="button">Ir a la Página Principal</a>
+    </div>
+</body>
+</html>

@@ -1,8 +1,8 @@
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.shortcuts import render
-from .models import Usuario
-from .forms import UsuarioForm
+from .models import Producto, Usuario
+from .forms import UsuarioForm,ProductoForm
 
 def agregar_usuario(request):
     if request.method == 'POST':
@@ -41,3 +41,21 @@ def verificar_carnet(request):
             mensaje = f'El carnet {carnet} no existe en la base de datos.'
 
     return render(request, 'verificar_carnet.html', {'mensaje': mensaje})
+
+def agregar_producto(request):
+    if request.method == 'POST':
+        form = ProductoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_productos')
+    else:
+        form = ProductoForm()
+    return render(request, 'agregar_producto.html', {'form': form})
+
+def listar_productos(request):
+    productos = Producto.objects.all()  # Recupera todos los productos de la base de datos
+    return render(request, 'lista_productos.html', {'productos': productos})
+
+def informacion_producto(request, producto_id):
+    producto = get_object_or_404(Producto, pk=producto_id)
+    return render(request, 'informacion_producto.html', {'producto': producto})
