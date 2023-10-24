@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Información del Historial{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Información del Historial</h1>
+        <p><strong>Tipo:</strong> {{ historial.tipo }}</p>
+        <p><strong>Usuario:</strong> {{ historial.usuario.username }}</p>
+        <p><strong>Producto:</strong> {{ historial.producto.nombre }}</p>
+        <p><strong>Fecha de Movimiento:</strong> {{ historial.fecha_movimiento }}</p>
+        <!-- Agrega otros detalles del historial si los tienes -->
+        <a href="{% url 'historial' %}" class="button">Volver al Historial</a>
+    </div>
+{% endblock %}

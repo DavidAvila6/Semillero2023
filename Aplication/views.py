@@ -73,7 +73,19 @@ def entregar_producto(request):
     if request.method == 'POST':
         form = EntregaProductoForm(request.POST)
         if form.is_valid():
-            form.save()  # Guardar la entrega del producto en la base de datos
+            # Guardar la entrega del producto en la tabla de Movimiento
+            movimiento = form.save()
+            
+            # Crear un nuevo objeto de Historial con la misma información
+            historial = Historial(
+                usuario=movimiento.usuario, 
+                producto=movimiento.producto, 
+                tipo='Entrega',
+                fecha_movimiento=movimiento.hora_entrega)
+            
+            # Guardar el objeto de Historial en la base de datos
+            historial.save()
+
             return redirect('lista_movimientos')  # Redirigir a la lista de movimientos
     else:
         form = EntregaProductoForm()
@@ -90,6 +102,15 @@ def devolver_producto(request):
             try:
                 movimiento = Movimiento.objects.get(producto__codigo=codigo_producto)
                 movimiento.delete()  # Elimina el registro de movimiento
+                # Crear un nuevo objeto de Historial con la misma información
+                historial = Historial(
+                    usuario=movimiento.usuario, 
+                    producto=movimiento.producto, 
+                    tipo='Devolucion',
+                    fecha_movimiento=movimiento.hora_entrega)
+                
+                # Guardar el objeto de Historial en la base de datos
+                historial.save()
                 return redirect('lista_movimientos')
             except Movimiento.DoesNotExist:
                 # El código del producto no se encontró en los movimientos
@@ -108,7 +129,11 @@ def informacion_movimiento(request, movimiento_id):
     context = {'movimiento': movimiento}
     return render(request, 'informacion_movimiento.html', context)
 
-def historial_movimientos(request):
+def historial(request):
     historial = Historial.objects.all()
 
     return render(request, 'historial_movimientos.html', {'historial': historial})
+
+def informacion_historial(request, historial_id):
+    historial = get_object_or_404(Historial, pk=historial_id)  # Asegúrate de importar el modelo Historial
+    return render(request, 'informacion_historial.html', {'historial': historial})

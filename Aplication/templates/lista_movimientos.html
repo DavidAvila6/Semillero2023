@@ -3,8 +3,9 @@
 {% block title %}Lista de Movimientos{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>Lista de Movimientos</h1>
+<h1>Lista de Movimientos</h1>
+    <div class="products-container">
+        
         <ul class="user-list">
             {% for movimiento in movimientos %}
                 <li>
@@ -17,7 +18,8 @@
                 </li>
             {% endfor %}
         </ul>
+    </div>
         <a href="{% url 'entregar_producto' %}" class="button">Entregar Producto</a>
         <a href="{% url 'principal' %}" class="button">Ir a la Página Principal</a>
-    </div>
+    
 {% endblock %}
