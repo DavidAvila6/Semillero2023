@@ -6,7 +6,7 @@
         <ul class="user-list">
             {% for producto in productos %}
                 <li class="product-item">
-                    <a href="{% url 'informacion_producto' producto.id %}" class="product-link">
+                    <a href="{% url 'informacion_producto' producto.id %}" class="buttonl">
                         <div class="product-info">
                             <strong>{{ producto.nombre }}</strong>
                             <p>Marca: {{ producto.marca }}</p>

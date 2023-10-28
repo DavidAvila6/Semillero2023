@@ -25,6 +25,17 @@ p {
     font-size: 24px;
 }
 
+.container {
+    font-size: 20px; /* Aumenta el tamaño de fuente */
+    line-height: 1.6; /* Aumenta la altura de línea para mejorar la legibilidad */
+    max-width: 800px; /* Establece un ancho máximo para el contenido */
+    margin: 0 auto; /* Centra el contenido en la página */
+}
+
+.container strong {
+    font-weight: bold; /* Hace que las etiquetas <strong> tengan un peso de fuente más fuerte (negrita) */
+}
+
 .button-container {
     display: flex;
     flex-direction: column;
@@ -73,14 +84,6 @@ p {
     padding: 0;
 }
 
-.product-item {
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 
 .product-link {
     text-decoration: none;
@@ -106,10 +109,7 @@ p {
 .product-item {
     width: calc(25% - 20px); /* Espacio para 4 columnas con margen */
     margin-bottom: 20px;
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
     border-radius: 5px;
-    padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -255,4 +255,16 @@ header {
 .icon-bar {
     width: 50px; /* Establece el ancho de la imagen según tus preferencias */
     height: 50px; /* Establece la altura de la imagen según tus preferencias */
+}
+.buttonl {
+    display: block; /* Hace que el enlace sea un bloque, ocupando todo el ancho disponible */
+    padding: 10px; /* Ajusta el relleno (padding) según tus preferencias */
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: left; /* Alinea el texto a la izquierda */
 }

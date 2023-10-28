@@ -5,16 +5,14 @@
 {% block content %}
 <h1>Lista de Movimientos</h1>
     <div class="products-container">
-        
         <ul class="user-list">
             {% for movimiento in movimientos %}
-                <li>
-                    <a href="{% url 'informacion_movimiento' movimiento.id %}" class="button">
+                <li class="product-item">
+                    <a href="{% url 'informacion_movimiento' movimiento.id %}" class="buttonl">
                         <strong>Usuario:</strong> {{ movimiento.usuario.nombre }}<br>
                         <strong>Producto:</strong> {{ movimiento.producto.nombre }}<br>
                         <strong>Fecha de Entrega:</strong> {{ movimiento.hora_entrega }}
                     </a>
-                    <br><br><br>
                 </li>
             {% endfor %}
         </ul>

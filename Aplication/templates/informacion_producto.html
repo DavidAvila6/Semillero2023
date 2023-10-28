@@ -5,11 +5,9 @@
 {% block content %}
     <div class="container">
         <h1>Información de Producto</h1>
-        <ul>
-            <li><strong>Nombre:</strong> {{ producto.nombre }}</li>
-            <li><strong>Marca:</strong> {{ producto.marca }}</li>
-            <li><strong>Código de Barras:</strong> {{ producto.codigo }}</li>
-        </ul>
+        <p><strong>Nombre:</strong> {{ producto.nombre }}</p>
+            <p><strong>Marca:</strong> {{ producto.marca }}</p>
+                <p><strong>Código de Barras:</strong> {{ producto.codigo }}</p>
         <a href="{% url 'listar_productos' %}" class="button">Volver a la Lista de Productos</a>
     </div>
 {% endblock %}

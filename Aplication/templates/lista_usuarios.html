@@ -6,13 +6,14 @@
         <ul class="user-list">
             {% for usuario in usuarios %}
                 <li>
-                    <a href="{% url 'informacion_usuario' usuario.id %}" class="button">
+                    <a href="{% url 'informacion_usuario' usuario.id %}" class="buttonl">
                         {{ usuario.nombre }} - {{ usuario.carrera }}
                     </a>
                     <br><br><br>
                 </li>
             {% endfor %}
         </ul>
-        <a href="{% url 'principal' %}" class="button">Ir a la Página Principal</a>
     </div>
+        <a href="{% url 'principal' %}" class="button">Ir a la Página Principal</a>
+    
 {% endblock %}

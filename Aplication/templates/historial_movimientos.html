@@ -10,7 +10,7 @@
         
         <div class="movement-list">
             {% for movimiento in historial %}
-            <a href="{% url 'informacion_historial' movimiento.id %}" class="button{% if movimiento.tipo == 'Devolución' %} devolucion{% endif %}">
+            <a href="{% url 'informacion_historial' movimiento.id %}" class="buttonl{% if movimiento.tipo == 'Devolución' %} devolucion{% endif %}">
                 <strong>Tipo:</strong> {{ movimiento.tipo }}<br>
                 <strong>Usuario:</strong> {{ movimiento.usuario.username }}<br>
                 <strong>Producto:</strong> {{ movimiento.producto.nombre }}<br>
