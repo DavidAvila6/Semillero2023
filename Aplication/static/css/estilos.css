@@ -2,8 +2,8 @@
 body {
     text-align: center;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #007BFF, #b42b08);
-    color: #fff;
+    background: linear-gradient(to bottom, #012143, #2b79ed); /* Fondo azul claro a oscuro */
+    color: #fff; /* Texto en blanco */
     margin: 0;
     height: 100vh;
     display: flex;
@@ -16,6 +16,10 @@ body {
 h1 {
     font-size: 36px;
 }
+h2 {
+    font-size: 100px; /* Establece el tamaño del título según tus preferencias */
+}
+
 
 p {
     font-size: 24px;
@@ -24,7 +28,7 @@ p {
 .button-container {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .products-container {
@@ -41,14 +45,29 @@ p {
     background: linear-gradient(to bottom, #007BFF, #012143);
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
+    text-decoration: none;
     cursor: pointer;
     font-size: 20px;
+    margin-right: 10px;
+    margin-top: 10px;
 }
 
-.button:hover {
-    background: linear-gradient(to bottom, #0056b3, #003c6e);
+.special-button {
+    padding: 2% 5%; /* Utiliza porcentajes para el relleno */
+    background: linear-gradient(to bottom, #007BFF, #012143);
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1vw; 
+    margin-right: 1%; 
+    margin-top: 1%; 
 }
+
+
+
 .product-list {
     list-style: none;
     padding: 0;
@@ -74,16 +93,7 @@ p {
     margin-left: 10px;
 }
 
-.button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 20px;
-}
+
 /* Estilos para la lista de productos */
 .user-list {
     list-style: none;
@@ -114,17 +124,7 @@ p {
     margin-left: 10px;
 }
 
-/* Estilos para botones */
-.button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 20px;
-}
+
 
 /* Media query para adaptar el diseño en dispositivos más pequeños */
 @media (max-width: 992px) {
@@ -149,18 +149,47 @@ p {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
     background-color: #0e3563; /* Cambia el color de fondo según tus preferencias */
     color: #fff; /* Cambia el color del texto según tus preferencias */
     padding: 10px;
+    float: right;
+    height: 100vh;
     /* Otras propiedades de estilo que desees aplicar */
 }
 
-/* Estilos para los elementos del menú del navbar */
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%); /* Mueve el menú hacia la izquierda fuera de la pantalla */
+      }
+      to {
+        transform: translateX(0); /* Mueve el menú a su posición normal */
+      }
+  }
+
+  
+  
+/* Aplica la animación al menú de hamburguesa */
 .navbar-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    display: none;
+    animation: slideIn 0.2s ease-in forwards; /* Aplica la animación cuando se muestra el menú */
+  }
+  
+
+/* Estilos para el botón de la hamburguesa */
+.menu-toggle {
+    display: block;
+    cursor: pointer;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: #fff; /* Establece el color del icono en blanco */
+    margin: 6px 0;
+}
+
+.navbar-menu.show-menu {
+    display: block;
 }
 
 .navbar-item {
@@ -195,18 +224,35 @@ p {
     margin-bottom: 8px;
 }
 
-.button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 18px;
-}
 
-.button:hover {
-    background-color: #0056b3;
-}
 .devolucion {
     color: red;
+}
+
+header {
+    background-color: #e9f5fb; /* Fondo azul claro */
+    color: #007BFF; /* Texto en azul */
+}
+
+/* Estilos para la sección de héroe */
+.hero-section {
+    background-color: #4c8dfb; /* Color de fondo */
+    text-align: center;
+    padding: 80px 0; /* Espaciado interior */
+}
+
+.hero-title {
+    font-size: 48px; /* Tamaño del título */
+    color: #fff; /* Color del texto en blanco */
+}
+
+.hero-subtitle {
+    font-size: 24px; /* Tamaño del subtítulo */
+    color: #e9f5fb; /* Color del subtítulo */
+    margin-top: 20px; /* Espaciado superior */
+}
+
+.icon-bar {
+    width: 50px; /* Establece el ancho de la imagen según tus preferencias */
+    height: 50px; /* Establece la altura de la imagen según tus preferencias */
 }

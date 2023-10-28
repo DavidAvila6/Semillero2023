@@ -1,25 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>SEMILLERO</h1>
-    <p>¡Bienvenido a la página!</p>
+<div >
+    <h1 class="hero-title">SergioPlus</h1>
+    <p class="hero-subtitle">¡Bienvenido a la página!</p>
+</div>
 
-    <div class="button-container">
-        
-        <a href="{% url 'agregar_usuario' %}" class="button">Agregar Usuario</a>
+<div class="button-container">
+    <a href="{% url 'agregar_usuario' %}" class="button">Agregar Usuario</a>
+    <a href="{% url 'entregar_producto' %}" class="button">Entregar Producto</a>
+    <a href="{% url 'listar_usuarios' %}" class="button">Ir a la Lista de Usuarios</a>
+    <a href="{% url 'verificar_carnet' %}" class="button">Verificar Carnet</a>
+    <a href="{% url 'agregar_producto' %}" class="button">Agregar Producto</a>
+    <a href="{% url 'listar_productos' %}" class="button">Lista de Productos</a>
+</div>
 
-        <a href="{% url 'entregar_producto' %}" class="button">Entregar Producto</a>
-
-        <a href="{% url 'listar_usuarios' %}" class="button">Ir a la Lista de Usuarios</a>
-
-        <a href="{% url 'verificar_carnet' %}" class="button">Verificar Carnet</a>
-
-        <a href="{% url 'agregar_producto' %}" class="button">Agregar Producto</a>
-
-        <a href="{% url 'listar_productos' %}" class="button">Lista de Productos</a>
-
-
-
-        
-    </div>
     {% endblock %}

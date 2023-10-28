@@ -4,17 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Semillero{% endblock %}</title>
+    <title>{% block title %}SergioPlus{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
 </head>
 <body>
     <nav class="navbar">
         <div class="navbar-container">
-            <h1 class="navbar-title">SEMILLERO</h1>
+            <div class="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <br>
+            <a href="{% url 'usuarios' %}" class="user-link">
+                <img src="{% static 'img/usuario.png' %}" alt="Usuario" class="icon-bar">
+            </a><br><br>
+            <a href="{% url 'productos' %}" class="user-link">
+                <img src="{% static 'img/producto.png' %}" alt="productos" class="icon-bar">
+            </a><br><br>
+            <a href="{% url 'movimientos' %}" class="user-link">
+                <img src="{% static 'img/movimiento.png' %}" alt="Movimientos" class="icon-bar">
+            </a><br><br>
+
             <ul class="navbar-menu">
-                <a href="{% url 'usuarios' %}" class="button">Usuarios</a>
-                <a href="{% url 'productos' %}" class="button">Productos</a>
-                <a href="{% url 'movimientos' %}" class="button">Movimientos</a>
+                <h1 class="navbar-title">SERGIOPLUS</h1><br>
+                <a href="{% url 'usuarios' %}" class="button">Usuarios</a><br><br><br><br>
+                <a href="{% url 'productos' %}" class="button">Productos</a><br><br><br><br>
+                <a href="{% url 'movimientos' %}" class="button">Movimientos</a><br><br><br>
             </ul>
         </div>
     </nav>
@@ -24,3 +40,11 @@
     </div>
 </body>
 </html>
+<script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navbarMenu = document.querySelector(".navbar-menu");
+    
+    menuToggle.addEventListener("click", () => {
+        navbarMenu.classList.toggle("show-menu");
+    });
+    </script>
