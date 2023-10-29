@@ -3,13 +3,70 @@
 {% block title %}Entregar Producto{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>Entregar Producto</h1>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="button">Entregar Producto</button>
-        </form>
-        <a href="{% url 'lista_movimientos' %}" class="button">Ir a la Lista de Movimientos</a>
-    </div>
+{% load static %}
+<div class="container">
+    <h1>Entregar Producto</h1>
+    <form method="post" onsubmit="return validateForm();">
+        {% csrf_token %}
+        
+        <div id="carnet-input">
+            <img id="imagen-usuario" src="{% static 'img/ingresecarnet.png' %}" alt="Usuario" style="width: 400px; height: 400px;"><br>
+            <input type="text" name="usuario_id" id="usuario_id" placeholder="PONGA SU CARNET" onkeydown="checkEnter(event, 'producto_id')" autofocus>
+        </div>
+        
+        <div id="producto-input" style="display: none;">
+            <img id="imagen-producto" src="{% static 'img/ingreseproducto.png' %}" alt="Producto" style="width: 400px; height: 400px;"><br>
+            <input type="text" name="producto_id" id="producto_id" placeholder="PONGA EL ID DEL PRODUCTO" onkeydown="checkEnter(event, 'submit-button')">
+        </div>
+        <br>
+        
+        <button type="submit" class="button" id="submit-button" style="display: none;">Entregar Producto</button>
+    </form>
+    
+    <br>
+    <a href="{% url 'lista_movimientos' %}" class="button">Ir a la Lista de Movimientos</a>
+</div>
+
+<script>
+    function checkEnter(event, nextFieldId) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById(nextFieldId).focus();
+        }
+    }
+
+    function validateForm() {
+        var usuario_id = document.getElementById('usuario_id').value.trim();
+        var producto_id = document.getElementById('producto_id').value.trim();
+        
+        if (usuario_id === "") {
+            alert("Por favor, complete el campo del usuario antes de continuar.");
+            return false;
+        }
+        
+        if (producto_id === "") {
+            alert("Por favor, complete el campo del producto antes de enviar el formulario.");
+            return false;
+        }
+        
+        return true;
+    }
+    
+    document.getElementById('usuario_id').addEventListener('input', function() {
+        var usuario_id = this.value.trim();
+        if (usuario_id !== "") {
+            document.getElementById('producto-input').style.display = 'block';
+            document.getElementById('imagen-usuario').style.display = 'none';
+            document.getElementById('imagen-producto').style.display = 'inline';
+        }
+    });
+    
+    document.getElementById('producto_id').addEventListener('input', function() {
+        var producto_id = this.value.trim();
+        if (producto_id !== "") {
+            document.getElementById('submit-button').style.display = 'block';
+        }
+    });
+</script>
+</div>
 {% endblock %}

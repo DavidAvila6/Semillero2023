@@ -4,6 +4,7 @@ from django.shortcuts import render
 from .models import Historial, Movimiento, Producto, Usuario
 from .forms import DevolucionProductoForm, UsuarioForm,ProductoForm,EntregaProductoForm,Movimiento
 
+
 def usuarios(request):
     return render(request, 'usuarios.html')
 
@@ -73,24 +74,48 @@ def entregar_producto(request):
     if request.method == 'POST':
         form = EntregaProductoForm(request.POST)
         if form.is_valid():
-            # Guardar la entrega del producto en la tabla de Movimiento
-            movimiento = form.save()
+            # Obtener el ID del usuario proporcionado en el formulario
+            usuario_id = form.cleaned_data['usuario_id']
             
-            # Crear un nuevo objeto de Historial con la misma información
-            historial = Historial(
-                usuario=movimiento.usuario, 
-                producto=movimiento.producto, 
-                tipo='Entrega',
-                fecha_movimiento=movimiento.hora_entrega)
-            
-            # Guardar el objeto de Historial en la base de datos
-            historial.save()
+            usuario = None
+            # Intentar obtener el usuario por ID
+            try:
+                usuario = Usuario.objects.get(carnet=usuario_id)  # Usar .get() en lugar de .filter()
+                
+            except Usuario.DoesNotExist:
+                # Manejar el caso en que el usuario no existe
+                # Puedes mostrar un mensaje de error o redirigir a una página de error.
+                # Por ejemplo, return render(request, 'error.html')
+                pass
+            if usuario :
+                
+                producto_id = form.cleaned_data['producto_id']
+                producto = Producto.objects.get(codigo=producto_id)
+    
+                movimiento = Movimiento(usuario=usuario, producto=producto)
+                movimiento.save()
 
-            return redirect('lista_movimientos')  # Redirigir a la lista de movimientos
+                # Crear un nuevo objeto de Historial con la misma información
+                historial = Historial(
+                    usuario=usuario,
+                    producto=movimiento.producto,  # Ajusta esto según tu modelo de Movimiento
+                    tipo='Entrega',
+                    fecha_movimiento=movimiento.hora_entrega)  # Ajusta esto según tu modelo de Movimiento
+
+                # Guardar el objeto de Historial en la base de datos
+                historial.save()
+
+                return redirect('lista_movimientos')  # Redirigir a la lista de movimientos
+
     else:
         form = EntregaProductoForm()
-    
+
     return render(request, 'entregar_producto.html', {'form': form})
+
+
+
+
+
 
 def devolver_producto(request):
     if request.method == 'POST':

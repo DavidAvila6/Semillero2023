@@ -31,6 +31,8 @@ class Movimiento(models.Model):
 class DevolucionProducto(models.Model):
     codigo_producto = models.CharField(max_length=50)
 
+
+
 class Historial(models.Model):
     
     tipo = models.CharField(max_length=10)

@@ -25,6 +25,9 @@
             <a href="{% url 'movimientos' %}" class="user-link">
                 <img src="{% static 'img/movimiento.png' %}" alt="Movimientos" class="icon-bar">
             </a><br><br>
+            <a class="user-link" onclick="goBack()">
+                <img src="{% static 'img/volver.png' %}" class="icon-bar">
+            </a>
 
             <ul class="navbar-menu">
                 <h1 class="navbar-title">SERGIOPLUS</h1><br>
@@ -47,4 +50,8 @@
     menuToggle.addEventListener("click", () => {
         navbarMenu.classList.toggle("show-menu");
     });
+
+    function goBack() {
+        window.history.back();
+    }
     </script>
