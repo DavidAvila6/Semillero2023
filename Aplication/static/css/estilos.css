@@ -74,8 +74,9 @@ p {
     cursor: pointer;
     font-size: 1vw; 
     margin-right: 1%; 
-    margin-top: 1%; 
+    margin-top: 10px; /* Ajusta la separación vertical aquí */
 }
+
 
 
 

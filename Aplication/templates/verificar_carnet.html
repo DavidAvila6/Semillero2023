@@ -3,12 +3,14 @@
 {% block title %}Verificar Carnet{% endblock %}
 
 {% block content %}
+{% load static %}
     <h1>Verificar Carnet</h1>
+    <img id="imagen-producto" src="{% static 'img/ingresecarnet.png' %}" alt="Producto" style="width: 400px; height: 400px;"><br>
     <form method="post">
         {% csrf_token %}
-        <label for="carnet">Ingrese el número de carnet:</label>
-        <input type="text" id="carnet" name="carnet">
-        <button class="button" type="submit">Verificar</button>
+        <input type="text" id="carnet" name="carnet" autofocus><br>
     </form>
-    <p>{{ mensaje }}</p>
+    <p>{{ mensaje|default:"Esperando respuesta" }}</p>
+
+    <a href="{% url 'principal' %}" class="button">Ir a la Página Principal</a>
 {% endblock %}
