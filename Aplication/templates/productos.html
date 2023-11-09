@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}Productos{% endblock %}
-{% load static %}
+
 {% block content %}
 
 
-
-<img src="{% static 'img/Logo.png' %}" alt="Usuario" class="icon-logo">
+{% load static %}
+<a href="{% url 'principal' %}" >
+    <img src="{% static 'img/Logo.png' %}" class="icon-logo">
+    </a>
     
     <h2>Opciones de Productos</h2>
     <div class="products-container">

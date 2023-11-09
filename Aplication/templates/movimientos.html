@@ -3,6 +3,10 @@
 {% block title %}Movimientos{% endblock %}
 
 {% block content %}
+{% load static %}
+<a href="{% url 'principal' %}" >
+    <img src="{% static 'img/Logo.png' %}" class="icon-logo">
+</a>
     <h2>Opciones de Movimientos</h2>
     <div class="movement-buttons">
         <a href="{% url 'lista_movimientos' %}" class="special-button">Lista de Movimientos</a>

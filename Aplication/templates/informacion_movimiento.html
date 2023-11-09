@@ -3,10 +3,9 @@
 {% block title %}Información de Movimiento{% endblock %}
 
 {% block content %}
-    <div class="container">
+<div class="info-container">
         <h1 class="info-heading">Información de Movimiento</h1>
 
-        <div class="info-container">
             <div class="info-section">
                 <h2 class="section-heading">Información del Usuario</h2>
                 <ul class="info-list">
@@ -33,7 +32,7 @@
                 </ul>
             </div>
         </div>
-
+    </div><br><br>
         <a href="{% url 'lista_movimientos' %}" class="button">Volver a la Lista de Movimientos</a>
-    </div>
+    
 {% endblock %}

@@ -2,7 +2,8 @@
 body {
     text-align: center;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #1783f6, #5f8dd1); /* Fondo azul claro a oscuro */
+    background: linear-gradient(to bottom, #1783f6, #1783f6); /* Fondo azul claro a oscuro */
+    background-attachment: fixed; /* Fondo fijo */
     color: #fff; /* Texto en blanco */
     margin: 0;
     height: 100vh;
@@ -11,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 
 
 h1 {
@@ -59,7 +61,7 @@ p {
 
 .button {
     padding: 15px 30px;
-    background: linear-gradient(to bottom, #007BFF, #012143);
+    background: linear-gradient(to bottom, #91b7e0b3, #75ade9c9);
     color: #fff;
     border: none;
     border-radius: 50px;
@@ -68,20 +70,37 @@ p {
     font-size: 20px;
     margin-right: 10px;
     margin-top: 10px;
+    transition: border 0.1s;
 }
-
+.button:hover {
+    border: 5px solid #fff; /* Borde blanco al pasar el cursor sobre el botón */
+}
 .special-button {
-    padding: 2% 5%; /* Utiliza porcentajes para el relleno */
-    background: linear-gradient(to bottom, #007BFF, #012143);
-    color: #fff;
+    padding: 2% 5%;
+    background: linear-gradient(to bottom, #91b7e0b3, #75ade9c9);
+    color: rgba(253, 253, 253, 0.986);
     text-decoration: none;
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    font-size: 1vw; 
-    margin-right: 1%; 
-    margin-top: 10px; /* Ajusta la separación vertical aquí */
+    font-size: 1vw;
+    font-weight: bold;
+    margin-right: 1%;
+    margin-top: 10px;
+    transition: border 0.1s; /* Agrega una transición suave al cambio de borde */
 }
+
+.special-button:hover {
+    border: 5px solid #fff; /* Borde blanco al pasar el cursor sobre el botón */
+}
+.info-container {
+    background-color: #6FA4E6; /* Color de fondo azul claro */
+    border: 2px solid #fff; /* Bordes blancos de 2 píxeles de ancho */
+    border-radius: 10px; /* Bordes circulares de 10 píxeles de radio */
+}
+
+
+
 
 
 

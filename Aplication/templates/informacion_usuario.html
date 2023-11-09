@@ -3,12 +3,13 @@
 {% block title %}Información de Usuario{% endblock %}
 
 {% block content %}
-    <div class="container">
+<div class="info-container">
         <h1>Información de Usuario</h1>
         <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
             <p><strong>Carrera:</strong> {{ usuario.carrera }}</p>
                 <p><strong>Carnet:</strong> {{ usuario.carnet }}</p>
                     <p><strong>Correo Electrónico:</strong> {{ usuario.correo_electronico }}</p>
+                </div><br><br>
         <a href="{% url 'listar_usuarios' %}" class="button">Volver a la Lista de Usuarios</a>
-    </div>
+    
 {% endblock %}

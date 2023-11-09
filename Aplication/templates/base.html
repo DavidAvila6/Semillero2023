@@ -5,15 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}SergioPlus{% endblock %}</title>
+    <link rel="icon" href="{% static 'img/Icon.png' %}" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}">
 </head>
 <body>
     <nav class="navbar">
         <div class="navbar-container">
             <div class="menu-toggle">
+                <center>
                 <div class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
+                </center>
             </div>
             <br>
             <a href="{% url 'usuarios' %}" class="user-link">
