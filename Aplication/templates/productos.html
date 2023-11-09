@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 
 {% block title %}Productos{% endblock %}
-
+{% load static %}
 {% block content %}
+
+
+
+<img src="{% static 'img/Logo.png' %}" alt="Usuario" class="icon-logo">
+    
     <h2>Opciones de Productos</h2>
-    <div class="product-container">
+    <div class="products-container">
         <a href="{% url 'listar_productos' %}" class="special-button">Lista de Productos</a>
         <a href="{% url 'agregar_producto' %}" class="special-button">Agregar Producto</a>
+        
         <a href="{% url 'entregar_producto' %}" class="special-button">Entregar Producto</a>
         <a href="{% url 'devolver_producto' %}" class="special-button">Devolver Producto</a>
     </div>

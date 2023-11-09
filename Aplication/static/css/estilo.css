@@ -2,7 +2,7 @@
 body {
     text-align: center;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #012143, #2b79ed); /* Fondo azul claro a oscuro */
+    background: linear-gradient(to bottom, #1783f6, #5f8dd1); /* Fondo azul claro a oscuro */
     color: #fff; /* Texto en blanco */
     margin: 0;
     height: 100vh;
@@ -43,9 +43,14 @@ p {
 }
 
 .products-container {
-    max-width: 800px;
-    max-height: 600px; /* Ajusta la altura máxima según tus necesidades */
-     /* Permite el desplazamiento vertical si es necesario */
+    max-width: 6000px;
+    max-height: 6000px; /* Ajusta la altura máxima según tus necesidades */
+    /* Permite el desplazamiento vertical si es necesario */
+}
+.product-container {
+    max-width: 600px;
+    max-height: 1200px; 
+    /* Permite el desplazamiento vertical si es necesario */
 }
 .users-container {
     max-height: 400px; /* Ajusta la altura máxima según tus necesidades */
@@ -151,7 +156,7 @@ p {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #0e3563; /* Cambia el color de fondo según tus preferencias */
+    background-color: #215792; /* Cambia el color de fondo según tus preferencias */
     color: #fff; /* Cambia el color del texto según tus preferencias */
     padding: 10px;
     float: right;
@@ -186,7 +191,7 @@ p {
 .bar {
     width: 30px;
     height: 3px;
-    background-color: #fff; /* Establece el color del icono en blanco */
+    background-color: #ffffff; /* Establece el color del icono en blanco */
     margin: 6px 0;
 }
 
@@ -201,7 +206,7 @@ p {
 
 /* Estilos para el contenido de la página */
 .content {
-    margin-top: 80px; /* Ajusta la altura del contenido para evitar solapamientos con el navbar */
+    margin-top: 0px; /* Ajusta la altura del contenido para evitar solapamientos con el navbar */
     padding: 20px;
 }
 
@@ -259,8 +264,8 @@ header {
     height: 50px; /* Establece la altura de la imagen según tus preferencias */
 }
 .icon-logo {
-    width: 50px; /* Establece el ancho de la imagen según tus preferencias */
-    height: 50px; /* Establece la altura de la imagen según tus preferencias */
+    width: 200px; /* Establece el ancho de la imagen según tus preferencias */
+    height: 200px; /* Establece la altura de la imagen según tus preferencias */
 }
 .buttonl {
     display: block; /* Hace que el enlace sea un bloque, ocupando todo el ancho disponible */

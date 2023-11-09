@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}SergioPlus{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}">
 </head>
 <body>
     <nav class="navbar">
@@ -17,16 +17,16 @@
             </div>
             <br>
             <a href="{% url 'usuarios' %}" class="user-link">
-                <img src="{% static 'img/usuario.png' %}" alt="Usuario" class="icon-bar">
+                <img src="{% static 'img/Usuario.png' %}" alt="Usuario" class="icon-bar">
             </a><br><br>
             <a href="{% url 'productos' %}" class="user-link">
-                <img src="{% static 'img/producto.png' %}" alt="productos" class="icon-bar">
+                <img src="{% static 'img/Producto.png' %}" alt="productos" class="icon-bar">
             </a><br><br>
             <a href="{% url 'movimientos' %}" class="user-link">
-                <img src="{% static 'img/movimiento.png' %}" alt="Movimientos" class="icon-bar">
+                <img src="{% static 'img/Movimiento.png' %}" alt="Movimientos" class="icon-bar">
             </a><br><br>
             <a class="user-link" onclick="goBack()">
-                <img src="{% static 'img/volver.png' %}" class="icon-bar">
+                <img src="{% static 'img/Volver.png' %}" class="icon-bar">
             </a>
 
             <ul class="navbar-menu">

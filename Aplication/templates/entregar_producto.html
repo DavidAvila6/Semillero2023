@@ -10,12 +10,12 @@
         {% csrf_token %}
         
         <div id="carnet-input">
-            <img id="imagen-usuario" src="{% static 'img/ingresecarnet.png' %}" alt="Usuario" style="width: 400px; height: 400px;"><br>
+            <img id="imagen-usuario" src="{% static 'img/Ingresecarnet.png' %}" alt="Usuario" style="width: 400px; height: 400px;"><br>
             <input type="text" name="usuario_id" id="usuario_id" placeholder="PONGA SU CARNET" onkeydown="checkEnter(event, 'producto_id')" autofocus>
         </div>
         
         <div id="producto-input" style="display: none;">
-            <img id="imagen-producto" src="{% static 'img/ingreseproducto.png' %}" alt="Producto" style="width: 400px; height: 400px;"><br>
+            <img id="imagen-producto" src="{% static 'img/Ingreseproducto.png' %}" alt="Producto" style="width: 400px; height: 400px;"><br>
             <input type="text" name="producto_id" id="producto_id" placeholder="PONGA EL ID DEL PRODUCTO" onkeydown="checkEnter(event, 'submit-button')">
         </div>
         <br>
