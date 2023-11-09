@@ -2,7 +2,7 @@
 body {
     text-align: center;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #1783f6, #1783f6); /* Fondo azul claro a oscuro */
+    background: linear-gradient(to bottom, #1783f6, #655fd1); /* Fondo azul claro a oscuro */
     background-attachment: fixed; /* Fondo fijo */
     color: #fff; /* Texto en blanco */
     margin: 0;
