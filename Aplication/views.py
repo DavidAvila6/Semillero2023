@@ -9,11 +9,8 @@ from django.shortcuts import render
 from Semillero import settings
 from .models import Historial, Movimiento, Producto, Usuario
 from .forms import DevolucionProductoForm, UsuarioForm,ProductoForm,EntregaProductoForm,Movimiento
-<<<<<<< HEAD
-=======
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
->>>>>>> f8a9799d17510d1e94d6945f873dba88bcadb972
 
 def usuarios(request):
     return render(request, 'usuarios.html')
