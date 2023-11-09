@@ -39,6 +39,7 @@ class Historial(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     usuario = models.ForeignKey('Usuario', on_delete=models.CASCADE)
     fecha_movimiento = models.DateTimeField(auto_now_add=True)
+    comentario = models.TextField(blank=True, null=True, default='Ningún Comentario')
 
     def __str__(self):
         return f"{self.tipo} - {self.producto} - {self.usuario}"

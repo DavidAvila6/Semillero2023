@@ -3,7 +3,7 @@
 {% block title %}Formulario de Usuario{% endblock %}
 
 {% block content %}
-    <div class="container">
+<div class="info-container">
         <h1>Formulario de Usuario</h1>
         <form method="post" class="user-form">
             {% csrf_token %}
@@ -13,6 +13,7 @@
             <br>
         </form>
         <br><br><br>
+    </div><br><br>
         <a href="{% url 'principal' %}" class="button">Ir a la Página Principal</a>
-    </div>
+    
 {% endblock %}

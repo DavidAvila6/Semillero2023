@@ -1,9 +1,12 @@
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.shortcuts import render
+
+from Semillero import settings
 from .models import Historial, Movimiento, Producto, Usuario
 from .forms import DevolucionProductoForm, UsuarioForm,ProductoForm,EntregaProductoForm,Movimiento
-
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 def usuarios(request):
     return render(request, 'usuarios.html')
@@ -21,6 +24,19 @@ def agregar_usuario(request):
             usuario = form.save(commit=False)
             # Puedes hacer ajustes en el campo id aquí si es necesario
             usuario.save()
+
+            # Renderiza el contenido HTML desde la plantilla
+            context = {'user': usuario}  # Puedes pasar datos adicionales a la plantilla si es necesario
+            html_content = render_to_string('correos/emailpage.html', context)
+
+
+                # Envía un correo electrónico de confirmación con contenido HTML
+            subject = 'Bienvenido a Nuestra Aplicación'
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = [usuario.correo_electronico]
+
+            send_mail(subject, '', from_email, recipient_list, fail_silently=True, html_message=html_content)
+
             return redirect('listar_usuarios')  # Ajusta según el nombre de tu vista de lista de usuarios
     else:
         form = UsuarioForm()
@@ -102,12 +118,24 @@ def entregar_producto(request):
                     usuario=usuario,
                     producto=movimiento.producto,  # Ajusta esto según tu modelo de Movimiento
                     tipo='Entrega',
-                    fecha_movimiento=movimiento.hora_entrega)  # Ajusta esto según tu modelo de Movimiento
-
+                    fecha_movimiento=movimiento.hora_entrega,  # Ajusta esto según tu modelo de Movimiento
+                    comentario=movimiento.comentario)
                 # Guardar el objeto de Historial en la base de datos
                 historial.save()
 
-                return redirect('lista_movimientos')  # Redirigir a la lista de movimientos
+            context = {'movimiento': movimiento}  # Puedes pasar datos adicionales a la plantilla si es necesario
+            html_content = render_to_string('correos/usuario_producto.html', context)
+
+
+                # Envía un correo electrónico de confirmación con contenido HTML
+            subject = 'Entrega de Producto de SERGIOPLUS'
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = [usuario.correo_electronico]
+
+            send_mail(subject, '', from_email, recipient_list, fail_silently=True, html_message=html_content)
+
+            return redirect('lista_movimientos')  # Redirigir a la lista de movimientos
+        
 
     else:
         form = EntregaProductoForm()

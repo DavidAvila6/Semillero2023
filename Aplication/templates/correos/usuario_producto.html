@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recibiste un producto en SERGIOPLUS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>¡Recibiste un producto de SERGIOPLUS!</h1>
+    <img src="https://www.ambitojuridico.com/sites/default/files/styles/imagen_800x400/public/2022-05/Transportadora-entrega-domicilio%28Freepik%29.jpg.webp?itok=JIZKFbrl" alt="Imagen de Agradecimiento">
+    
+    <p>Usted ha recibido el producto: {{ movimiento.producto.nombre }}, a la hora {{ movimiento.hora_entrega }}</p>
+    
+    
+    <p>Si tienes alguna pregunta o necesitas ayuda, no dudes en <a href="contacto.html">contactarnos</a>.</p>
+    <p>¡Esperamos verte pronto en nuestro sitio!</p>
+</body>
+</html>

@@ -22,6 +22,7 @@ class EntregaProductoForm(forms.ModelForm):
 
 class DevolucionProductoForm(forms.ModelForm):
     codigo_producto = forms.CharField(widget=forms.TextInput(attrs={'autofocus': 'autofocus'}))
+    
     class Meta:
         model = DevolucionProducto
         fields = ['codigo_producto']
