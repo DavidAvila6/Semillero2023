@@ -9,14 +9,19 @@
     <form method="post" onsubmit="return validateForm();">
         {% csrf_token %}
         
-        <div id="carnet-input">
+        <div id="carnet-input" >
             <img id="imagen-usuario" src="{% static 'img/Ingresecarnet.png' %}" alt="Usuario" style="width: 400px; height: 400px;"><br>
+            
             <input type="text" name="usuario_id" id="usuario_id" placeholder="PONGA SU CARNET" onkeydown="checkEnter(event, 'producto_id')" autofocus>
         </div>
         
         <div id="producto-input" style="display: none;">
             <img id="imagen-producto" src="{% static 'img/Ingreseproducto.png' %}" alt="Producto" style="width: 400px; height: 400px;"><br>
-            <input type="text" name="producto_id" id="producto_id" placeholder="PONGA EL ID DEL PRODUCTO" onkeydown="checkEnter(event, 'submit-button')">
+            <input type="textarea" name="producto_id" id="producto_id" placeholder="PONGA EL ID DEL PRODUCTO" onkeydown="checkEnter(event, 'submit-button')">
+        </div>
+        <div id="comentario-input" style="display: none;">
+            <label for="comentario">Comentario (opcional):</label><br>
+            <textarea name="comentario" id="comentario" rows="4" cols="50" placeholder="Añade un comentario opcional"></textarea>
         </div>
         <br>
         <center>
@@ -61,6 +66,13 @@
         }
     });
     
+    document.getElementById('producto_id').addEventListener('input', function() {
+        var producto_id = this.value.trim();
+        if (producto_id !== "") {
+            document.getElementById('comentario-input').style.display = 'block';
+            document.getElementById('imagen-producto').style.display = 'none';
+        }
+    });
     document.getElementById('producto_id').addEventListener('input', function() {
         var producto_id = this.value.trim();
         if (producto_id !== "") {

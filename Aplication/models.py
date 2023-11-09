@@ -23,7 +23,7 @@ class Movimiento(models.Model):
     usuario = models.ForeignKey('Usuario', on_delete=models.CASCADE)
     producto = models.ForeignKey('Producto', on_delete=models.CASCADE)
     hora_entrega = models.DateTimeField(auto_now_add=True)
-    
+    comentario = models.TextField(blank=True, null=True, default='Ningún Comentario')
 
     def __str__(self):
         return f'Movimiento de {self.usuario} para {self.producto} a las {self.hora_entrega}'

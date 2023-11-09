@@ -14,10 +14,11 @@ class ProductoForm(forms.ModelForm):
 class EntregaProductoForm(forms.ModelForm):
     usuario_id = forms.CharField(label='ID del Usuario')
     producto_id = forms.CharField(label='ID del Producto')
+    comentario = forms.CharField(label='Comentario del Producto')
 
     class Meta:
         model = Movimiento
-        fields = ['usuario_id', 'producto_id']
+        fields = ['usuario_id', 'producto_id','comentario']
 
 class DevolucionProductoForm(forms.ModelForm):
     codigo_producto = forms.CharField(widget=forms.TextInput(attrs={'autofocus': 'autofocus'}))

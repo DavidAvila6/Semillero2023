@@ -88,11 +88,13 @@ def entregar_producto(request):
                 # Por ejemplo, return render(request, 'error.html')
                 pass
             if usuario :
+                comentario= form.cleaned_data['comentario']
+                
                 
                 producto_id = form.cleaned_data['producto_id']
                 producto = Producto.objects.get(codigo=producto_id)
     
-                movimiento = Movimiento(usuario=usuario, producto=producto)
+                movimiento = Movimiento(usuario=usuario, producto=producto,comentario=comentario)
                 movimiento.save()
 
                 # Crear un nuevo objeto de Historial con la misma información
