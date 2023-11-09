@@ -21,10 +21,11 @@
         </div>
         <div id="comentario-input" style="display: none;">
             <label for="comentario">Comentario (opcional):</label><br>
-            <textarea name="comentario" id="comentario" rows="4" cols="50" placeholder="Añade un comentario opcional"></textarea>
+            <textarea name="comentario" id="comentario" rows="4" cols="50" placeholder="Añade un comentario opcional">No comentario</textarea>
         </div>
         <br>
         <center>
+            <p>{{ mensaje|default:"" }}</p>
         <button type="submit" class="button" id="submit-button" style="display: none;">Entregar Producto</button>
     </form>
     

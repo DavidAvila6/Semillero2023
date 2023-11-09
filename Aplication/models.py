@@ -14,6 +14,7 @@ class Producto(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=255)
     marca = models.CharField(max_length=100)
+    modelo = models.CharField(max_length=100,default='Ningún modelo')
     codigo = models.CharField(max_length=50, unique=True)
 
     def __str__(self):
