@@ -1,0 +1,44 @@
+/* Estilos para el contenedor de productos */
+.products-container {
+    width: 950px; /* Ajusta el ancho del contenedor según sea necesario */
+    height: 750px; /* Ajusta la altura del contenedor según sea necesario */
+    overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+    border: 1px solid #ccc; /* Borde para el contenedor */
+}
+
+/* Estilos para la lista de productos */
+.user-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilos para cada elemento de producto */
+.product-item {
+    border-bottom: 1px solid #eee; /* Borde inferior entre productos */
+    padding: 10px;
+}
+
+/* Estilos para el enlace de producto */
+.product-item a {
+    text-decoration: none;
+    color: #fff; /* Color del texto blanco */
+    display: block;
+    padding: 10px; /* Añade relleno para asegurarte de que el texto no toque los bordes del botón */
+    overflow: hidden; /* Recorta cualquier contenido que se desborde del área del botón */
+}
+
+/* Estilos para la información del producto */
+.product-info {
+    padding-left: 10px;
+}
+
+/* Estilos para los elementos del producto */
+.product-info strong {
+    display: block;
+    font-size: 16px;
+}
+
+.product-info p {
+    margin: 5px 0;
+}

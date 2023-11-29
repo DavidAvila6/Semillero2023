@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+<br><br>
     <h1>Lista de Productos</h1>
     <div class="products-container">
         <ul class="user-list">
@@ -17,6 +20,7 @@
             {% endfor %}
         </ul>
     </div>
+    <br><br>
     <a href="{% url 'agregar_producto' %}" class="button">Agregar Producto</a>
     <a href="{% url 'principal' %}" class="button">Ir a la Página Principal</a>
 {% endblock %}
