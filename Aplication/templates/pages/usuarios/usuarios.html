@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Usuarios{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/principal.css' %}">
+
+<h2>Opciones de Usuarios</h2>
+<div class="button-container">
+    <a href="{% url 'agregar_usuario' %}" class="button-card">
+        <div class="card dark-blue-bg">
+            <i class="bx bx-user-plus card-icon white-text"></i>
+            <div class="card-text">
+                <h3 class="bold-text">Agregar Estudiante</h3>
+                <p>Añade un nuevo estudiante registrando algunos de sus datos al sistema.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{% url 'listar_usuarios' %}" class="button-card ">
+        <div class="card dark-blue-bg">
+            <i class="bx bx-list-check card-icon white-text"></i>
+            <div class="card-text">
+                <h3 class="bold-text">Lista de Estudiantes</h3>
+                <p>Ver la lista completa de estudiantes registrados.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{% url 'verificar_carnet' %}" class="button-card ">
+        <div class="card dark-blue-bg">
+            <i class="bx bx-id-card card-icon white-text"></i>
+            <div class="card-text">
+                <h3 class="bold-text">Verificar Carnet</h3>
+                <p>Verifica la existencia de un estudiante con su UID específico.</p>
+            </div>
+        </div>
+    </a>
+</div>
+{% endblock %}

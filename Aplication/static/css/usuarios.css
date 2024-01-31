@@ -1,0 +1,56 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 50%;
+}
+
+.button-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card {
+    margin: 15px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    cursor: pointer;
+    width: 300px; 
+    height: 350px; 
+}
+
+.dark-blue-bg {
+    background-color: #fff;
+    color: var(--primary-color);
+}
+
+.card:hover {
+    transform: scale(1.05);
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.card-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 18px;
+}
+
+.card-text .bold-text {
+    font-weight: 500;
+}
+
+h3 .bold-text{
+    font-weight: 500;
+}

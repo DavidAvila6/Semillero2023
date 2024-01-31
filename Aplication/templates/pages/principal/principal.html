@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/principal.css' %}">
+
+<div class="button-container">
+    <a href="{% url 'entregar_producto' %}" class="button-card">
+        <div class="card dark-blue-bg">
+            <i class='bx bx-devices card-icon white-text'></i>
+            <div class="card-text">
+                <h3 class="bold-text">Prestamo de Producto</h3>
+                <p>Realiza préstamos de productos.</p>
+            </div>
+          
+        </div>
+    </a>
+
+    <a href="{% url 'devolver_producto' %}" class="button-card">
+        <div class="card dark-blue-bg">
+            <i class='bx bx-undo card-icon white-text'></i>
+            <div class="card-text">
+                <h3 class="bold-text">Devolucion de Producto</h3>
+                <p>Devuelve productos previamente prestados.</p>
+            </div>
+           
+        </div>
+    </a>
+
+    <a href="{% url 'agregar_usuario' %}" class="button-card">
+        <div class="card dark-blue-bg">
+            <i class='bx bx-user-plus card-icon white-text'></i>
+            <div class="card-text">
+                <h3 class="bold-text">Registrar Estudiante</h3>
+                <p>Agrega nuevos estudiantes al sistema.</p>
+            </div>
+            
+        </div>
+    </a>
+
+    <a href="{% url 'historial' %}" class="button-card">
+        <div class="card dark-blue-bg">
+            <i class='bx bx-history card-icon white-text'></i>
+            <div class="card-text">
+                <h3 class="bold-text">Verificar Movimientos</h3>
+                <p>Revisa el historial de movimientos realizados.</p>
+            </div>
+           
+        </div>
+    </a>
+</div>
+
+{% endblock %}

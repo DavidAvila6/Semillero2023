@@ -2,59 +2,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}SergioPlus{% endblock %}</title>
-    <link rel="icon" href="{% static 'img/Icon.png' %}" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<body>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="menu-toggle">
-                <center>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                </center>
-            </div>
-            <br>
-            <a href="{% url 'usuarios' %}" class="user-link">
-                <img src="{% static 'img/Usuario.png' %}" alt="Usuario" class="icon-bar">
-            </a><br><br>
-            <a href="{% url 'productos' %}" class="user-link">
-                <img src="{% static 'img/Producto.png' %}" alt="productos" class="icon-bar">
-            </a><br><br>
-            <a href="{% url 'movimientos' %}" class="user-link">
-                <img src="{% static 'img/Movimiento.png' %}" alt="Movimientos" class="icon-bar">
-            </a><br><br>
-            <a class="user-link" onclick="goBack()">
-                <img src="{% static 'img/Volver.png' %}" class="icon-bar">
-            </a>
 
-            <ul class="navbar-menu">
-                <h1 class="navbar-title">SERGIOPLUS</h1><br>
-                <a href="{% url 'usuarios' %}" class="button">Usuarios</a><br><br><br><br>
-                <a href="{% url 'productos' %}" class="button">Productos</a><br><br><br><br>
-                <a href="{% url 'movimientos' %}" class="button">Movimientos</a><br><br><br>
-            </ul>
-        </div>
-    </nav>
+{% include 'home/sidebar.html' %}
+{% include 'home/header.html' %}
+<body>
     
-    <div class="content">
-        {% block content %}{% endblock %}
+    <div class="main-content">
+        <div class="contenido">
+            {% block content %}{% endblock %}
+        </div>
+        <a href="{% url 'principal' %}" class="button-go-to-home">
+            <i class="icon bx bx-home"></i>
+            Ir a la Página Principal
+        </a>
     </div>
+
 </body>
 </html>
-<script>
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navbarMenu = document.querySelector(".navbar-menu");
-    
-    menuToggle.addEventListener("click", () => {
-        navbarMenu.classList.toggle("show-menu");
-    });
-
-    function goBack() {
-        window.history.back();
-    }
-    </script>

@@ -1,0 +1,48 @@
+.info-container {
+    max-width: 70%;
+    margin: 20px auto;
+}
+
+.user-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.user-info {
+    text-align: left;
+}
+
+.user-info h1 {
+    margin-bottom: 20px;
+}
+
+.user-info p {
+    margin-bottom: 10px;
+}
+
+.user-info i {
+    margin-right: 10px;
+    font-size: 24px;
+    vertical-align: middle;
+}
+
+.return-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.return-button:hover {
+    background-color: #fff;
+    color: var(--primary-color);
+    justify-content: center;
+    text-align: center;
+}

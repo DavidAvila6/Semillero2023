@@ -1,0 +1,102 @@
+.card-filtro {
+    background: var(--primary-color);
+    color: #fff;
+    max-width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para el select */
+#carrera-select {
+    background-color: #fff;
+    color: var(--primary-color);
+    padding: 10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    width: 250px;
+    margin-right: 20px;
+}
+
+/* Estilo para la barra de búsqueda */
+#search-input {
+    background-color: #fff;
+    color: #555;
+    width: 250px;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+
+/* Estilo para las cards */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.user-card {
+    width: 300px;
+    height: 150px; /* Altura de la card */
+    margin: 15px;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-card:hover {
+    transform: scale(1.05);
+}
+
+.user-icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.user-name {
+    font-size: 18px;
+    color: var(--primary-color);
+    text-decoration: none; /* Quita el subrayado */
+    margin-bottom: 5px; 
+}
+
+.user-carrera {
+    font-size: 16px;
+    color: #555;
+    margin-top: 5px;
+    text-decoration: none; /* Quita el subrayado */
+}
+
+.user-card {
+    transition: transform 0.3s ease-in-out, 
+    background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+}
+
+.user-card:hover {
+    transform: scale(1.05);
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.user-card:hover .user-icon,
+.user-card:hover .user-info,
+.user-card:hover .user-name,
+.user-card:hover .user-carrera {
+    color: #fff;
+}

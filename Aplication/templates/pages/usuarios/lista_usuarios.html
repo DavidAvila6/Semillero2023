@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/lista_usuario.css' %}">
+
+<div class="container">
+    <h1>Lista de Estudiantes</h1>
+
+    <div class="card-filtro">
+        <i class='bx bx-filter-alt icon'></i>
+        <select id="carrera-select">
+            <option value="todos">Todos</option>
+            <option value="IngAmbiental">Ing. Ambiental</option>
+            <option value="IngIndustrial">Ing. Industrial</option>
+            <option value="CompIA">Comp. e IA</option>
+            <option value="IngElectronica">Ing. Electrónica</option>
+            <option value="Matematicas">Matemáticas</option>
+        </select>
+        <i class='bx bx-search-alt-2 icon'></i>
+        <input type="text" id="search-input" placeholder="Buscar por nombre o carnet">
+    </div>
+
+
+    <div class="card-container">
+        {% for usuario in usuarios %}
+            <div class="user-card" data-carrera="{{ usuario.carrera }}">
+                <a href="{% url 'informacion_usuario' usuario.id %}" class="buttonl">
+                    <i class="{{ usuario.icono }}" id="{{ usuario.carrera|lower }}-icon"></i>
+                    <div class="user-info">
+                        <span class="user-name">{{ usuario.nombre }}</span>
+                        <hr>
+                        <span class="user-carrera">{{ usuario.carrera }}</span>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script src="{% static 'js/lista_usuarios.js' %}"></script>
+</div>
+{% endblock %}

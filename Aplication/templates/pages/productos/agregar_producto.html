@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block title %}Agregar Producto{% endblock %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+
+<div class="card">
+    <div class="info-container">
+        <h1>Agregar Producto</h1>
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="{{ form.nombre.id_for_label }}">Nombre:</label>
+                <div class="input-icon">
+                    <i class='bx bx-purchase-tag-alt'></i>
+                    {{ form.nombre }}
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.marca.id_for_label }}">Marca:</label>
+                <div class="input-icon">
+                    <i class="bx bxs-building"></i>
+                    {{ form.marca }}
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.modelo.id_for_label }}">Modelo:</label>
+                <div class="input-icon">
+                    <i class="bx bx-laptop"></i>
+                    {{ form.modelo }}
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.codigo.id_for_label }}">Código:</label>
+                <div class="input-icon">
+                    <i class="bx bx-barcode"></i>
+                    {{ form.codigo }}
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.ubicacion.id_for_label }}">Ubicación:</label>
+                <div class="input-icon">
+                    <i class="bx bx-map"></i>
+                    {{ form.ubicacion }}
+                </div>
+            </div>
+            
+            <div class="form-group" id="otra-ubicacion-group">
+                <label for="{{ form.otra_ubicacion.id_for_label }}">Otra Ubicación:</label>
+                <div class="input-icon">
+                    <i class="bx bx-map"></i>
+                    {{ form.otra_ubicacion }}
+                </div>
+            </div>
+            
+            <button type="submit" class="button">
+                <i class="bx bx-check"></i>
+                Guardar
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const ubicacionSelect = document.getElementById('{{ form.ubicacion.id_for_label }}');
+    const otraUbicacionGroup = document.getElementById('otra-ubicacion-group');
+
+    function toggleOtraUbicacion() {
+        otraUbicacionGroup.style.display = ubicacionSelect.value === 'OTRO' ? 'block' : 'none';
+    }
+
+    ubicacionSelect.addEventListener('change', toggleOtraUbicacion);
+
+    // Al cargar la página, también verifica la condición inicial
+    toggleOtraUbicacion();
+});
+</script>
+
+{% endblock %}

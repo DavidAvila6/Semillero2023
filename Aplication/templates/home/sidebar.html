@@ -1,0 +1,73 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/sidebar.css' %}">
+    <div class="sidebar">
+
+            <div class="logo_content">
+                <div class="logo">
+                    <img src="{% static 'img/Logo.png' %}" alt="Logo">
+                <div class="text header-text">
+                    <span class="logo_name">Sergio Plus</span>
+                    <span class="logo_subname">Semillero 2023</span>
+                </div>         
+            </div>   
+            <i class='bx bx-menu' id='btn'></i>
+        </div>
+
+        <div class="src">
+            <i class='bx bx-search' ></i>
+            <input type="text" placeholder="Buscar..">
+        </div>
+
+        <ul class="nav">
+
+                    <li>
+                        <a href="{% url 'principal' %}">
+                            <i class='bx bx-home-alt icon'></i>
+                            <span class="link_name">Dashboard</span>
+                        </a>
+                            <span class="tooltip">Dashboard</span>
+                    </li>
+            
+                    <li>
+                        <a href="{% url 'usuarios' %}">
+                            <i class='bx bx-user icon'></i>
+                            <span class="link_name">Usuarios</span>
+                        </a>
+                            <span class="tooltip">Usuarios</span>
+                    </li>
+               
+                    <li>
+                        <a href="{% url 'productos' %}">
+                            <i class='bx bx-barcode icon'></i>
+                            <span class="link_name">Productos</span>
+                        </a>
+                        <span class="tooltip">Productos</span>
+                    </li>
+              
+                    <li>
+                        <a href="{% url 'movimientos' %}">
+                            <i class='bx bx-history icon'></i>
+                            <span class="link_name">Movimientos</span>
+                        </a>
+                        <span class="tooltip">Movimientos</span>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class='bx bx-cloud-download icon'></i>
+                            <span class="link_name">Informes</span>
+                        </a>
+                        <span class="tooltip">Informes</span>
+                    </li>
+
+                    <li class="log-out">
+                        <a href="#">
+                            <i class='bx bx-log-out icon'></i>
+                            <span class="link_name">Salir</span>
+                        </a>
+                        <span class="tooltip">Salir</span>
+                    </li>
+        </ul>
+            </div>
+
+    <script src="{% static 'js/sidebar.js' %}"></script>

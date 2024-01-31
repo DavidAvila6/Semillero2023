@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Información de Usuario{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/informacion_usuario.css' %}">
+<div class="info-container">
+    <div class="user-card">
+        <div class="user-info">
+            <h1>Información de Usuario</h1>
+            <p><i class="bx bx-user"></i> <strong>Nombre:</strong> {{ usuario.nombre }}</p>
+            <p><i class="bx bx-book-reader"></i> <strong>Carrera:</strong> {{ usuario.carrera }}</p>
+            <p><i class="bx bx-id-card"></i> <strong>Carnet:</strong> {{ usuario.carnet }}</p>
+            <p><i class="bx bx-envelope"></i> <strong>Correo Electrónico:</strong> {{ usuario.correo_electronico }}</p>
+        </div>
+        <br><br>
+        <a href="{% url 'listar_usuarios' %}" class="button return-button"><i class="bx bx-arrow-back"></i> Volver a la Lista de Usuarios</a>
+    </div>
+</div>
+{% endblock %}

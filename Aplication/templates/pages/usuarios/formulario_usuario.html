@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Formulario de Usuario{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/formulario_usuario.css' %}">
+    <div class="user-info-container">
+        <h1>Formulario de Usuario</h1>
+        <div class="form-container">
+            <form method="post" class="user-form">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="id_nombre">
+                        <i class="icon bx bx-user"></i>
+                        Nombre:
+                    </label>
+                    {{ form.nombre }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_correo_electronico">
+                        <i class="icon bx bx-mail-send"></i>
+                        Correo Electrónico:
+                    </label>
+                    {{ form.correo_electronico }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_carrera">
+                        <i class="icon bx bx-book-open"></i>
+                        Carrera:
+                    </label>
+                    {{ form.carrera }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_carnet">
+                        <i class="icon bx bx-credit-card"></i>
+                        Número de Carnet:
+                    </label>
+                    {{ form.carnet }}
+                </div>
+
+                <br>
+                <button class="button-save" type="submit">
+                    <i class="icon bx bx-check"></i>
+                    Guardar
+                </button>
+            </form>
+        </div>
+        <div class="image-container">
+        </div>
+    </div>
+    <br><br>
+{% endblock %}

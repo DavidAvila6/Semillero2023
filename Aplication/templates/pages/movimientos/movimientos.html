@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Movimientos{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/principal.css' %}">
+
+<h2>Opciones de Movimientos</h2>
+<div class="button-container">
+    <a href="{% url 'lista_movimientos' %}" class="button-card">
+        <div class="card dark-blue-bg">
+            <i class="bx bx-transfer card-icon white-text"></i>
+            <div class="card-text">
+                <h3 class="bold-text">Lista de Movimientos</h3>
+                <p>Visualiza una lista detallada de todos los movimientos registrados.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{% url 'historial' %}" class="button-card">
+        <div class="card dark-blue-bg">
+            <i class="bx bx-history card-icon white-text"></i>
+            <div class="card-text">
+                <h3 class="bold-text">Historial de Movimientos</h3>
+                <p>Accede al historial completo de movimientos realizados en el sistema.</p>
+            </div>
+        </div>
+    </a>
+    <!-- Puedes agregar más botones de movimiento aquí según sea necesario -->
+</div>
+{% endblock %}

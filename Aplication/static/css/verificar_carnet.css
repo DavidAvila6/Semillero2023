@@ -1,0 +1,50 @@
+.verification-container {
+    max-width: 50%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input {
+    padding: 10px;
+    width: 50%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.verify-button {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.verify-button:hover {
+    background-color: #fff;
+    color: var(--primary-color);
+}
+
+p {
+    margin-top: 20px;
+}
+
+.button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.button:hover {
+    background-color: #fff;
+    color: var(--primary-color);
+}

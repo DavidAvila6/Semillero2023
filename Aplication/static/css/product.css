@@ -1,44 +1,57 @@
-/* Estilos para el contenedor de productos */
-.products-container {
-    width: 950px; /* Ajusta el ancho del contenedor según sea necesario */
-    height: 750px; /* Ajusta la altura del contenedor según sea necesario */
-    overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
-    border: 1px solid #ccc; /* Borde para el contenedor */
+/* Estilo para todos los iconos en el formulario */
+.input-icon i {
+    font-size: 20px;  /* Ajusta el tamaño según tu preferencia */
+    color: var(--primary-color);  /* Utiliza el color principal definido */
+    margin-right: 5px;  /* Margen a la derecha para separar el icono del texto */
 }
 
-/* Estilos para la lista de productos */
-.user-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+/* Estilo para la card del formulario */
+.card {
+    margin-top: 30px;
+    background-color: #fff;  /* Fondo blanco */
+    color: var(--primary-color);  /* Texto y iconos en el color principal */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;  /* Ajusta el relleno según tu preferencia */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  /* Sombra ligera */
 }
 
-/* Estilos para cada elemento de producto */
-.product-item {
-    border-bottom: 1px solid #eee; /* Borde inferior entre productos */
+/* Estilo para todos los campos de entrada en el formulario */
+form input, form select {
+    margin: 10px 0;  /* Ajusta el margen según tu preferencia */
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilo específico para el input de Otra Ubicación */
+#otra_ubicacion {
+    display: none;  /* Inicialmente oculto */
+    margin: 10px 0;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilo para el botón de Guardar */
+form button {
+    margin: 10px 0;
     padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-/* Estilos para el enlace de producto */
-.product-item a {
-    text-decoration: none;
-    color: #fff; /* Color del texto blanco */
-    display: block;
-    padding: 10px; /* Añade relleno para asegurarte de que el texto no toque los bordes del botón */
-    overflow: hidden; /* Recorta cualquier contenido que se desborde del área del botón */
-}
-
-/* Estilos para la información del producto */
-.product-info {
-    padding-left: 10px;
-}
-
-/* Estilos para los elementos del producto */
-.product-info strong {
-    display: block;
-    font-size: 16px;
-}
-
-.product-info p {
-    margin: 5px 0;
+/* Efecto hover para el botón de Guardar */
+form button:hover {
+    background-color: #fff;
+    color: var(--primary-color);
 }

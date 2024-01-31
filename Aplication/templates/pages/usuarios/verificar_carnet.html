@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Verificar Carnet{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/verificar_carnet.css' %}">
+
+<div class="verification-container">
+    <h1 class="verification-title">Verificar Carnet</h1>
+    <form method="post" class="verification-form">
+        {% csrf_token %}
+        <input type="text" id="carnet" name="carnet" placeholder="Ingrese el número de carnet" autofocus>
+        <button type="submit" class="verify-button">Verificar</button>
+    </form>
+    <p class="verification-message">{{ mensaje|default:"Esperando respuesta" }}</p>
+
+    <a href="{% url 'principal' %}" class="return-button">Ir a la Página Principal</a>
+</div>
+{% endblock %}

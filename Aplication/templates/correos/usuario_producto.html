@@ -6,25 +6,59 @@
     <title>Recibiste un producto en SERGIOPLUS</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             text-align: center;
             padding: 20px;
-        }
-        h1 {
+            margin: 0;
             color: #333;
         }
+
+        h1 {
+            color: #1a237e; /* Azul oscuro */
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        img.logo {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        img.delivery-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
         p {
             color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
+    <img src="img/Logo.png" alt="Logo de SERGIOPLUS" class="logo">
     <h1>¡Recibiste un producto de SERGIOPLUS!</h1>
-    <img src="https://www.ambitojuridico.com/sites/default/files/styles/imagen_800x400/public/2022-05/Transportadora-entrega-domicilio%28Freepik%29.jpg.webp?itok=JIZKFbrl" alt="Imagen de Agradecimiento">
+    <img src="https://img.freepik.com/foto-gratis/imagen-hombre-sorprendido-feliz-reaccionando-oferta-especial-internet-mirando-portatil-emocionado-pie-contra-fondo-azul_1258-65513.jpg?w=900&t=st=1706579018~exp=1706579618~hmac=04fdcd52c29798e71a011a13c2ebfaa1adcc39ca7180fbb8691beb45f8b9f78a" alt="Imagen de Agradecimiento" class="delivery-image">
     
-    <p>Usted ha recibido el producto: {{ movimiento.producto.nombre }}, a la hora {{ movimiento.hora_entrega }}</p>
-    
+    <p>Usted ha recibido el producto: <strong>{{ movimiento.producto.nombre }}</strong>, a la hora {{ movimiento.hora_entrega }}</p>
     
     <p>Si tienes alguna pregunta o necesitas ayuda, no dudes en <a href="contacto.html">contactarnos</a>.</p>
     <p>¡Esperamos verte pronto en nuestro sitio!</p>

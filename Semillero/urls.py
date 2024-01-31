@@ -22,8 +22,6 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.principal),
-    path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('principal/', views.principal, name='principal'),
     path('agregar-usuario/', views.agregar_usuario, name='agregar_usuario'),
     path('listar-usuarios/', views.listar_usuarios, name='listar_usuarios'),
@@ -41,9 +39,4 @@ urlpatterns = [
     path('devolver_producto/', views.devolver_producto, name='devolver_producto'),
     path('historial/', views.historial, name='historial'),
     path('historial/<int:historial_id>/', views.informacion_historial, name='informacion_historial'),
-    
-    
-    
-
-
 ]

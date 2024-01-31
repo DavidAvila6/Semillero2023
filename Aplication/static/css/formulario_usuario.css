@@ -1,0 +1,61 @@
+/* Estilos para Formulario de Usuario */
+.user-info-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+.user-info-container h1 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 36px;
+}
+
+.user-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.user-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.user-form input[type="text"],
+.user-form input[type="password"],
+.user-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.user-form button {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.user-form button:hover {
+    background-color: var(--primary-color);
+}
+
+.user-form select[name="carrera"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Productos{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/principal.css' %}">
+
+<h2>Opciones de Productos</h2>
+<div class="button-container">
+    <a href="{% url 'entregar_producto' %}" class="button-card">
+        <div class="card dark-blue-bg">
+            <i class="bx bx-shopping-bag card-icon white-text"></i>
+            <div class="card-text">
+                <h3 class="bold-text">Entregar Producto</h3>
+                <p>Realiza la entrega de un producto al destinatario correspondiente.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{% url 'devolver_producto' %}" class="button-card">
+        <div class="card dark-blue-bg">
+            <i class="bx bx-reply card-icon white-text"></i>
+            <div class="card-text">
+                <h3 class="bold-text">Devolver Producto</h3>
+                <p>Proceso de devolución de un producto a la tienda o al almacén.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{% url 'agregar_producto' %}" class="button-card">
+        <div class="card dark-blue-bg">
+            <i class="bx bx-plus card-icon white-text"></i>
+            <div class="card-text">
+                <h3 class="bold-text">Agregar Producto</h3>
+                <p>Añade un nuevo producto al sistema con su respectiva información.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{% url 'listar_productos' %}" class="button-card">
+        <div class="card dark-blue-bg">
+            <i class="bx bx-list-ul card-icon white-text"></i>
+            <div class="card-text">
+                <h3 class="bold-text">Lista de Productos</h3>
+                <p>Visualiza la lista completa de productos registrados en el sistema.</p>
+            </div>
+        </div>
+    </a>
+</div>
+{% endblock %}
