@@ -47,3 +47,36 @@
 .add-product-button i {
     margin-right: 10px;
 }
+
+/* Agrega este estilo para el botón de eliminar */
+.delete-product-button {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #ff5555; /* Color rojo */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.delete-product-button:hover {
+    background-color: #cc0000; /* Cambia el color al pasar el mouse */
+}
+
+/* Agrega este estilo para el botón de editar */
+.edit-product-button {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #007bff; /* Color azul */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-left: 5px; /* Añade un espacio entre los botones */
+    transition: background-color 0.3s ease-in-out;
+}
+
+.edit-product-button:hover {
+    background-color: #0056b3; /* Cambia el color al pasar el mouse */
+}

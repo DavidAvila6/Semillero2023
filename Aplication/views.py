@@ -239,3 +239,21 @@ def registrar_usuario(request):
     else:
         form = UserCreationForm()
     return render(request, 'auth/registro.html', {'form': form})
+
+def eliminar_producto(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+    producto.delete()
+    return redirect('listar_productos')
+
+def editar_producto(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+
+    if request.method == 'POST':
+        form = ProductoForm(request.POST, instance=producto)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_productos')
+    else:
+        form = ProductoForm(instance=producto)
+
+    return render(request, 'pages/productos/editar_producto.html', {'form': form, 'producto': producto})

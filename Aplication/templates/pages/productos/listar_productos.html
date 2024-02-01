@@ -4,29 +4,40 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/lista_productos.css' %}">
 <br><br>
-    <h1>Lista de Productos</h1>
-    <div class="products-container">
-        <table class="product-table">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Marca</th>
-                    <th>Código de Barras</th>
+<h2>Lista de Productos</h2>
+<div class="products-container">
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Marca</th>
+                <th>Código de Barras</th>
+                <th>Disponible</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+                <tr class="product-item">
+                    <td><a href="{% url 'informacion_producto' producto.id %}">{{ producto.nombre }}</a></td>
+                    <td>{{ producto.marca }}</td>
+                    <td>{{ producto.codigo }}</td>
+                    <td>{% if producto.disponible %}Sí{% else %}No{% endif %}</td>
+                    <td>
+                        <a href="{% url 'eliminar_producto' producto.id %}" class="delete-product-button">
+                            <i class="bx bx-trash"></i> Eliminar
+                        </a>
+                        <a href="{% url 'editar_producto' producto.id %}" class="edit-product-button">
+                            <i class="bx bx-edit"></i> Editar
+                        </a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                {% for producto in productos %}
-                    <tr class="product-item">
-                        <td><a href="{% url 'informacion_producto' producto.id %}">{{ producto.nombre }}</a></td>
-                        <td>{{ producto.marca }}</td>
-                        <td>{{ producto.codigo }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    <br><br>
-    <a href="{% url 'agregar_producto' %}" class="add-product-button">
-        <i class="bx bx-plus"></i> Agregar Producto
-    </a>    
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<br><br>
+<a href="{% url 'agregar_producto' %}" class="button-go-to-home">
+    <i class="bx bx-plus"></i> Agregar Producto
+</a>
 {% endblock %}

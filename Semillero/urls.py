@@ -39,4 +39,6 @@ urlpatterns = [
     path('devolver_producto/', views.devolver_producto, name='devolver_producto'),
     path('historial/', views.historial, name='historial'),
     path('historial/<int:historial_id>/', views.informacion_historial, name='informacion_historial'),
+    path('eliminar-producto/<int:producto_id>/', views.eliminar_producto, name='eliminar_producto'),
+     path('editar-producto/<int:producto_id>/', views.editar_producto, name='editar_producto'),
 ]
