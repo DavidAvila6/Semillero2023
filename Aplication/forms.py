@@ -56,13 +56,20 @@ class ProductoForm(forms.ModelForm):
         self.fields['otra_ubicacion'].required = False
         
 class EntregaProductoForm(forms.ModelForm):
-    usuario_id = forms.ModelChoiceField(queryset=Usuario.objects.all(), label='Usuario')
-    producto_id = forms.ModelChoiceField(queryset=Producto.objects.all(), label='Producto')
-    comentario = forms.CharField(label='Comentario del Producto')
-
+    usuario_id = forms.CharField(label='Número de Carnet', max_length=100, widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+    
     class Meta:
         model = Movimiento
-        fields = ['usuario_id', 'producto_id', 'comentario']
+        fields = ['usuario_id', 'producto', 'comentario']
+        widgets = {
+            'usuario_id': forms.TextInput(attrs={'readonly': 'readonly'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(EntregaProductoForm, self).__init__(*args, **kwargs)
+        # Filtrar los productos disponibles
+        productos_disponibles = Producto.objects.filter(disponible=True)
+        self.fields['producto'].queryset = productos_disponibles
 
 class DevolucionProductoForm(forms.ModelForm):
     codigo_producto = forms.CharField(widget=forms.TextInput(attrs={'autofocus': 'autofocus'}))

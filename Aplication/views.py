@@ -108,44 +108,43 @@ def listar_productos(request):
 def informacion_producto(request, producto_id):
     producto = get_object_or_404(Producto, pk=producto_id)
     return render(request, 'pages/productos/informacion_producto.html', {'producto': producto})
+
 def entregar_producto(request):
     mensaje = None
 
     if request.method == 'POST':
         form = EntregaProductoForm(request.POST)
         if form.is_valid():
-            # Obtener el ID del usuario proporcionado en el formulario
             usuario_id = form.cleaned_data['usuario_id']
             
-            usuario = None
-            # Intentar obtener el usuario por ID
             try:
                 usuario = Usuario.objects.get(carnet=usuario_id)
             except Usuario.DoesNotExist:
-                # Manejar el caso en que el usuario no existe
                 mensaje = 'Usuario no encontrado. Por favor, registra al usuario antes de hacer el préstamo.'
                 return render(request, 'pages/productos/entregar_producto.html', {'form': form, 'mensaje': mensaje})
 
+            productos_disponibles = Producto.objects.filter(disponible=True)
+            form.fields['producto'].queryset = productos_disponibles
+            
             comentario = form.cleaned_data['comentario']
-            producto_id = form.cleaned_data['producto_id']
-            producto = Producto.objects.get(codigo=producto_id)
-            valid = Movimiento.objects.filter(producto=producto)
+            producto = form.cleaned_data['producto']
 
-            if valid.exists():
-                mensaje = 'El Producto ya está con un usuario.'
+            if not producto.disponible:
+                mensaje = 'El Producto no está disponible para ser entregado.'
             else:
                 mensaje = ''
+                producto.disponible = False
+                producto.save()
+
                 movimiento = Movimiento(usuario=usuario, producto=producto, comentario=comentario)
                 movimiento.save()
 
-                # Crear un nuevo objeto de Historial con la misma información
                 historial = Historial(
                     usuario=usuario,
                     producto=movimiento.producto,
                     tipo='Entrega',
                     fecha_movimiento=movimiento.hora_entrega,
                     comentario=movimiento.comentario)
-                # Guardar el objeto de Historial en la base de datos
                 historial.save()
 
                 context = {'movimiento': movimiento}
@@ -164,7 +163,7 @@ def entregar_producto(request):
         form = EntregaProductoForm()
 
     return render(request, 'pages/productos/entregar_producto.html', {'form': form, 'mensaje': mensaje})
-
+                  
 def devolver_producto(request):
     if request.method == 'POST':
         form = DevolucionProductoForm(request.POST)

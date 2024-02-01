@@ -4,82 +4,52 @@
 
 {% block content %}
 {% load static %}
-<div class="container">
-    <h1>Entregar Producto</h1>
-    <form method="post" onsubmit="return validateForm();">
-        {% csrf_token %}
-        
-        <div id="carnet-input" >
-            <img id="imagen-usuario" src="{% static 'img/Ingresecarnet.png' %}" alt="Usuario" style="width: 400px; height: 400px;"><br>
-            
-            <input type="text" name="usuario_id" id="usuario_id" placeholder="PONGA SU CARNET" onkeydown="checkEnter(event, 'producto_id')" autofocus>
-        </div>
-        
-        <div id="producto-input" style="display: none;">
-            <img id="imagen-producto" src="{% static 'img/Ingreseproducto.png' %}" alt="Producto" style="width: 400px; height: 400px;"><br>
-            <input type="textarea" name="producto_id" id="producto_id" placeholder="PONGA EL ID DEL PRODUCTO" onkeydown="checkEnter(event, 'submit-button')">
-        </div>
-        <div id="comentario-input" style="display: none;">
-            <label for="comentario">Comentario (opcional):</label><br>
-            <textarea name="comentario" id="comentario" rows="4" cols="50" placeholder="Añade un comentario opcional">No comentario</textarea>
-        </div>
+<link rel="stylesheet" type="text/css" href="{% static 'css/entregar_producto.css' %}">
+<div class="card">
+    <div class="card-body">
+        <h2 class="center-text">Entregar Producto</h2>
+        <form method="post" onsubmit="return validateForm();">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="usuario_id">Carnet:</label>
+                <div class="input-container">
+                    <i class='bx bxs-id-card input-icon'></i>
+                    <input type="text" name="usuario_id" id="usuario_id" placeholder="Ingrese su carnet" onkeydown="checkEnter(event, 'producto_id')" autofocus>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="producto_id">Seleccione un Producto:</label>
+                <div class="input-container">
+                    <i class='bx bxs-purchase-tag-alt input-icon'></i>
+                    <select name="producto" id="producto_id" onchange="updateAvailability();">
+                        <option value="" disabled selected>Seleccione un producto</option>
+                        {% for producto in form.producto.field.queryset %}
+                            <option value="{{ producto.id }}">{{ producto.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <i class='bx bx-bell '></i>
+                <label for="comentario">Comentario (opcional):</label>
+                <textarea name="comentario" id="comentario" rows="4" cols="50" placeholder="Añada un comentario opcional"></textarea>
+            </div>
+
+            <br>
+            <center>
+                <p class="error-message">{{ form.errors.usuario_id }}</p>
+                <p class="error-message">{{ form.errors.producto }}</p>
+                <p>{{ mensaje|default:"" }}</p>
+                <button type="submit" class="button" id="submit-button">Entregar Producto</button>
+            </center>
+        </form>
+
         <br>
-        <center>
-            <p>{{ mensaje|default:"" }}</p>
-        <button type="submit" class="button" id="submit-button" style="display: none;">Entregar Producto</button>
-    </form>
-    
-    <br>
-    <a href="{% url 'lista_movimientos' %}" class="button">Ir a la Lista de Movimientos</a>
+    </div>
 </div>
-
-<script>
-    function checkEnter(event, nextFieldId) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            document.getElementById(nextFieldId).focus();
-        }
-    }
-
-    function validateForm() {
-        var usuario_id = document.getElementById('usuario_id').value.trim();
-        var producto_id = document.getElementById('producto_id').value.trim();
-        
-        if (usuario_id === "") {
-            alert("Por favor, complete el campo del usuario antes de continuar.");
-            return false;
-        }
-        
-        if (producto_id === "") {
-            alert("Por favor, complete el campo del producto antes de enviar el formulario.");
-            return false;
-        }
-        
-        return true;
-    }
-    
-    document.getElementById('usuario_id').addEventListener('input', function() {
-        var usuario_id = this.value.trim();
-        if (usuario_id !== "") {
-            document.getElementById('producto-input').style.display = 'block';
-            document.getElementById('imagen-usuario').style.display = 'none';
-            document.getElementById('imagen-producto').style.display = 'inline';
-        }
-    });
-    
-    document.getElementById('producto_id').addEventListener('input', function() {
-        var producto_id = this.value.trim();
-        if (producto_id !== "") {
-            document.getElementById('comentario-input').style.display = 'block';
-            document.getElementById('imagen-producto').style.display = 'none';
-        }
-    });
-    document.getElementById('producto_id').addEventListener('input', function() {
-        var producto_id = this.value.trim();
-        if (producto_id !== "") {
-            document.getElementById('submit-button').style.display = 'block';
-        }
-    });
-</script>
-</div>
+<a href="{% url 'lista_movimientos' %}" class="button-go-to-home">Ir a la Lista de Movimientos</a>
+<script src="{% static 'js/entregar_producto.js' %}"></script>
 {% endblock %}
