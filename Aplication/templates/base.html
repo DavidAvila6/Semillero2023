@@ -10,10 +10,9 @@
 </head>
 
 {% include 'home/sidebar.html' %}
-{% include 'home/header.html' %}
 <body>
-    
     <div class="main-content">
+        {% include 'home/header.html' %}
         <div class="contenido">
             {% block content %}{% endblock %}
         </div>

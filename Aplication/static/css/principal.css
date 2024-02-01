@@ -13,7 +13,7 @@
 
 .card {
     margin: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid #fff;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -36,7 +36,7 @@
 .card:hover {
     transform: scale(1.05);
     background-color: var(--primary-color);
-    color: #fff;
+    color: #fff  !important;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);  /* Aumenta la sombra en hover */
 }
 

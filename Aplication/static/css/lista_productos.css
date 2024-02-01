@@ -1,0 +1,49 @@
+/* Estilo para la lista de productos como tabla */
+.products-container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Estilo para la tabla */
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+/* Estilo para las celdas de la tabla */
+.product-table td, .product-table th {
+    border: 1px solid #d6d4d4;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Estilo para la cabecera de la tabla */
+.product-table th {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Estilo para el botón "Agregar Producto" */
+.add-product-button {
+    display: block;
+    margin-top: 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 40px;
+}
+
+/* Estilo para el ícono dentro del botón */
+.add-product-button i {
+    margin-right: 10px;
+}

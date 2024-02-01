@@ -1,0 +1,35 @@
+.card-header {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    font-size: 14px;
+    margin: auto;
+    max-width: 100%;
+    width: 92%;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+}
+
+.img-header {
+    width: 100px;
+    height: 100px;
+}
+
+.text-content {
+    margin-left: 20px; /* Ajusta el espacio entre la imagen y el texto según tus preferencias */
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+p .header-text{
+    color: #555;
+    font-size: 12px;
+}

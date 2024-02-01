@@ -1,6 +1,14 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
-<nav class="search-bar">
-    <img src="logo.png" alt="Sergio Plus Logo" class="logo">
-    <input type="text" placeholder="Buscar...">
-</nav>
+<div class="card-header">
+    <a href="{% url 'principal' %}">
+    <div class="header-content">
+        <img src="{% static 'img/Logo.png' %}" alt="Sergio Plus Logo" class="img-header">
+        <div class="text-content">
+            <h1>Sergio Plus</h1>
+            <hr>
+            <p class="header-text">Semillero 2023 - Plataforma de Inventarios<br>Escuela de Ciencias Exactas e Ingeniería</p>
+        </div>
+    </div>
+</div>
+</a>

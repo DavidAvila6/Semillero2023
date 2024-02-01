@@ -2,25 +2,31 @@
 
 {% block content %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/lista_productos.css' %}">
 <br><br>
     <h1>Lista de Productos</h1>
     <div class="products-container">
-        <ul class="user-list">
-            {% for producto in productos %}
-                <li class="product-item">
-                    <a href="{% url 'informacion_producto' producto.id %}" class="buttonl">
-                        <div class="product-info">
-                            <strong>{{ producto.nombre }}</strong>
-                            <p>Marca: {{ producto.marca }}</p>
-                            <p>Código de Barras: {{ producto.codigo }}</p>
-                        </div>
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Marca</th>
+                    <th>Código de Barras</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                    <tr class="product-item">
+                        <td><a href="{% url 'informacion_producto' producto.id %}">{{ producto.nombre }}</a></td>
+                        <td>{{ producto.marca }}</td>
+                        <td>{{ producto.codigo }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
     <br><br>
-    <a href="{% url 'agregar_producto' %}" class="button">Agregar Producto</a>
-    <a href="{% url 'principal' %}" class="button">Ir a la Página Principal</a>
+    <a href="{% url 'agregar_producto' %}" class="add-product-button">
+        <i class="bx bx-plus"></i> Agregar Producto
+    </a>    
 {% endblock %}

@@ -108,9 +108,9 @@ def listar_productos(request):
 def informacion_producto(request, producto_id):
     producto = get_object_or_404(Producto, pk=producto_id)
     return render(request, 'pages/productos/informacion_producto.html', {'producto': producto})
-
 def entregar_producto(request):
-    mensaje=None
+    mensaje = None
+
     if request.method == 'POST':
         form = EntregaProductoForm(request.POST)
         if form.is_valid():
@@ -120,57 +120,50 @@ def entregar_producto(request):
             usuario = None
             # Intentar obtener el usuario por ID
             try:
-                usuario = Usuario.objects.get(carnet=usuario_id)  # Usar .get() en lugar de .filter()
-                
+                usuario = Usuario.objects.get(carnet=usuario_id)
             except Usuario.DoesNotExist:
                 # Manejar el caso en que el usuario no existe
-                # Puedes mostrar un mensaje de error o redirigir a una página de error.
-                # Por ejemplo, return render(request, 'error.html')
-                pass
-            if usuario :
-                comentario= form.cleaned_data['comentario']
-                
-                
-                producto_id = form.cleaned_data['producto_id']
-                producto = Producto.objects.get(codigo=producto_id)
-                valid = Movimiento.objects.filter(producto=producto)
+                mensaje = 'Usuario no encontrado. Por favor, registra al usuario antes de hacer el préstamo.'
+                return render(request, 'pages/productos/entregar_producto.html', {'form': form, 'mensaje': mensaje})
 
-                if valid.exists():
-                    mensaje = f'El Producto ya esta con un usuario.'
-                else:
-                    mensaje = f''
-                    movimiento = Movimiento(usuario=usuario, producto=producto,comentario=comentario)
-                    movimiento.save()
+            comentario = form.cleaned_data['comentario']
+            producto_id = form.cleaned_data['producto_id']
+            producto = Producto.objects.get(codigo=producto_id)
+            valid = Movimiento.objects.filter(producto=producto)
+
+            if valid.exists():
+                mensaje = 'El Producto ya está con un usuario.'
+            else:
+                mensaje = ''
+                movimiento = Movimiento(usuario=usuario, producto=producto, comentario=comentario)
+                movimiento.save()
 
                 # Crear un nuevo objeto de Historial con la misma información
-                    historial = Historial(
+                historial = Historial(
                     usuario=usuario,
-                    producto=movimiento.producto,  # Ajusta esto según tu modelo de Movimiento
+                    producto=movimiento.producto,
                     tipo='Entrega',
-                    fecha_movimiento=movimiento.hora_entrega,  # Ajusta esto según tu modelo de Movimiento
+                    fecha_movimiento=movimiento.hora_entrega,
                     comentario=movimiento.comentario)
                 # Guardar el objeto de Historial en la base de datos
-                    historial.save()
+                historial.save()
 
-                    context = {'movimiento': movimiento}  # Puedes pasar datos adicionales a la plantilla si es necesario
-                    html_content = render_to_string('correos/usuario_producto.html', context)
-
+                context = {'movimiento': movimiento}
+                html_content = render_to_string('correos/usuario_producto.html', context)
 
                 # Envía un correo electrónico de confirmación con contenido HTML
-                    subject = 'Entrega de Producto de SERGIOPLUS'
-                    from_email = settings.EMAIL_HOST_USER
-                    recipient_list = [usuario.correo_electronico]
+                subject = 'Entrega de Producto de SERGIOPLUS'
+                from_email = settings.EMAIL_HOST_USER
+                recipient_list = [usuario.correo_electronico]
 
-                    send_mail(subject, '', from_email, recipient_list, fail_silently=True, html_message=html_content)
+                send_mail(subject, '', from_email, recipient_list, fail_silently=True, html_message=html_content)
 
-                    return redirect('lista_movimientos')  # Redirigir a la lista de movimientos
-        
+                return redirect('lista_movimientos')  # Redirigir a la lista de movimientos
 
     else:
         form = EntregaProductoForm()
 
-    return render(request, 'pages/productos/entregar_producto.html', {'form': form,'mensaje':mensaje})
-
+    return render(request, 'pages/productos/entregar_producto.html', {'form': form, 'mensaje': mensaje})
 
 def devolver_producto(request):
     if request.method == 'POST':

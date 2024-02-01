@@ -60,10 +60,10 @@ class Producto(models.Model):
     codigo = models.CharField(max_length=255)
     ubicacion = models.CharField(max_length=255, choices=OPCIONES_UBICACION, default='')
     otra_ubicacion = models.CharField(max_length=255, blank=True, null=True)
-
+    disponible = models.BooleanField(default=True)
 
     def __str__(self):
-        return f"{self.nombre} - {self.marca} - {self.codigo} - {self.ubicacion} - {self.modelo}"
+        return f"{self.nombre} - {self.marca} - {self.codigo} - {self.ubicacion} - {self.modelo} - {self.disponible}"
 
 class Movimiento(models.Model):
     usuario = models.ForeignKey('Usuario', on_delete=models.CASCADE)
