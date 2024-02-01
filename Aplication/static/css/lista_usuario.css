@@ -91,12 +91,12 @@
 .user-card:hover {
     transform: scale(1.05);
     background-color: var(--primary-color);
-    color: #fff;
+    color: #fff !important;
 }
 
 .user-card:hover .user-icon,
 .user-card:hover .user-info,
 .user-card:hover .user-name,
 .user-card:hover .user-carrera {
-    color: #fff;
+    color: #fff !important;
 }

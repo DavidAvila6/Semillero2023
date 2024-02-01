@@ -1,3 +1,24 @@
+.card-verificacion {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 80%; /* Ajusta el ancho de la card según tus preferencias */
+    max-width: 100%; /* Ajusta el ancho máximo de la card según tus preferencias */
+    font-size: 14px; /* Ajusta el tamaño del texto según tus preferencias */
+    margin: auto; /* Centra la card horizontalmente */
+}
+
+.gif-container {
+    margin-bottom: 20px; /* Espacio entre el título y el GIF */
+}
+
+.carnet-gif {
+    width: 55%; /* Ajusta el ancho del GIF al 100% del contenedor */
+    max-height: 300px; /* Ajusta la altura máxima del GIF según tus preferencias */
+}
+
 .verification-container {
     max-width: 50%;
     margin: 20px auto;

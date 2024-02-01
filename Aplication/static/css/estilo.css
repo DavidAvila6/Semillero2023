@@ -63,3 +63,13 @@ body.dark{
 .button-go-to-home:hover {
     background-color: var(--primary-color);
 }
+
+h2 {
+    color: var(--primary-color);
+    font-size: 24px;
+    font-weight: bolder;
+    margin: 0 auto; /* Centra el h2 horizontalmente */
+    text-align: center; /* Alinea el texto al centro */
+    margin-bottom: 10px;
+    margin-top: 2%;
+}

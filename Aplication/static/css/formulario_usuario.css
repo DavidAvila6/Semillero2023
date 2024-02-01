@@ -50,6 +50,7 @@
     background-color: var(--primary-color);
 }
 
+
 .user-form select[name="carrera"] {
     width: 100%;
     padding: 10px;

@@ -17,12 +17,16 @@ img{
     width: 80px; 
     height: auto; 
     display: inline-block; 
-    filter: brightness(100%) grayscale(100%) invert(100%) sepia(0%) hue-rotate(240deg);
 }
 
 .sidebar.active{
     width: 250px;
 }
+
+img.img-side{
+    filter: brightness(28%) grayscale(100%) invert(100%) sepia(0%) hue-rotate(240deg);
+}
+
 .sidebar .logo_content .logo{
     margin-top: 16%;
     display: flex;
