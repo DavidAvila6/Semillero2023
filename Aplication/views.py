@@ -212,7 +212,6 @@ def informacion_movimiento(request, movimiento_id):
 
 def historial(request):
     historial = Historial.objects.all()
-
     return render(request, 'pages/movimientos/historial_movimientos.html', {'historial': historial})
 
 def informacion_historial(request, historial_id):
@@ -248,3 +247,16 @@ def editar_producto(request, producto_id):
         form = ProductoForm(instance=producto)
 
     return render(request, 'pages/productos/editar_producto.html', {'form': form, 'producto': producto})
+
+def principal_view(request):
+    # Obtener datos para el gráfico
+    tipos_historial = ['Entrega', 'Devolución']
+    cantidad_movimientos = Historial.objects.values('tipo').annotate(count=Count('tipo')).order_by('tipo')
+
+    # Pasar datos al contexto
+    context = {
+        'tipos_historial': tipos_historial,
+        'cantidad_movimientos': [item['count'] for item in cantidad_movimientos],
+    }
+
+    return render(request, 'pages/principal/principal.html', context)

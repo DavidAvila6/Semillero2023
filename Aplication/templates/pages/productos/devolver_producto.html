@@ -10,7 +10,7 @@
     <h2 class="center-text">
         <span class="icon"><i class='bx bxs-box'></i></span> Devolver Producto
     </h2>
-    <form method="post">
+    <form method="post" id="devolverForm">
         {% csrf_token %}
 
         <div class="form-group">
@@ -23,11 +23,40 @@
             </div>
         </div>
 
-        <div class="error-message">{{ form.errors.producto }}</div>
-        <p>{{ mensaje|default:"" }}</p>
-        <button type="submit">
+        <div class="error-message" id="error-message">{{ form.errors.producto }}</div>
+        <p id="mensaje">{{ mensaje|default:"" }}</p>
+        <button type="submit" id="devolverButton">
             <span class="icon"><i class='bx bx-check'></i></span> Devolver Producto
         </button>
     </form>
 </div>
+
+<script>
+$(document).ready(function () {
+    $('#id_producto').change(function () {
+        var selectedProductoId = $(this).val();
+
+        $.ajax({
+            url: '/obtener_informacion_movimiento/',  // Ajusta la URL según tu configuración
+            data: {
+                'producto_id': selectedProductoId
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data['error']) {
+                    $('#mensaje').text('');
+                    $('#error-message').text(data['error']);
+                } else {
+                    $('#error-message').text('');
+                    $('#mensaje').text(data['mensaje']);
+                    // Actualiza aquí los elementos HTML con la información del movimiento
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    });
+});
+</script>
 {% endblock %}

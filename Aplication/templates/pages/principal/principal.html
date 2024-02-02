@@ -3,6 +3,9 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/principal.css' %}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
 <h2>Dashboard</h2>
 <div class="button-container">
     <a href="{% url 'entregar_producto' %}" class="button-card">
@@ -49,5 +52,6 @@
         </div>
     </a>
 </div>
+
 
 {% endblock %}
