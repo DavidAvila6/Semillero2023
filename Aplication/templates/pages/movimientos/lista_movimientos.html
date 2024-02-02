@@ -1,23 +1,33 @@
 {% extends 'base.html' %}
-
 {% block title %}Lista de Movimientos{% endblock %}
-
 {% block content %}
-<h1>Lista de Movimientos</h1>
-    <div class="products-container">
-        <ul class="user-list">
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/lista_movimientos.css' %}">
+
+<h2>Lista de Movimientos</h2>
+<div class="products-container">
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Producto</th>
+                <th>Fecha de Entrega</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
             {% for movimiento in movimientos %}
-                <li class="product-item">
-                    <a href="{% url 'informacion_movimiento' movimiento.id %}" class="buttonl">
-                        <strong>Usuario:</strong> {{ movimiento.usuario.nombre }}<br>
-                        <strong>Producto:</strong> {{ movimiento.producto.nombre }}<br>
-                        <strong>Fecha de Entrega:</strong> {{ movimiento.hora_entrega }}
-                    </a>
-                </li>
+                <tr>
+                    <td>{{ movimiento.usuario.nombre }}</td>
+                    <td>{{ movimiento.producto.nombre }}</td>
+                    <td>{{ movimiento.hora_entrega }}</td>
+                    <td>
+                        <a href="{% url 'informacion_movimiento' movimiento.id %}" class="button-go-to-home">Detalles</a>
+                    </td>
+                </tr>
             {% endfor %}
-        </ul>
-    </div>
-        <a href="{% url 'entregar_producto' %}" class="button">Entregar Producto</a>
-        <a href="{% url 'principal' %}" class="button">Ir a la Página Principal</a>
-    
+        </tbody>
+    </table>
+</div>
+
 {% endblock %}

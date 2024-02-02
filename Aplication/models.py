@@ -75,7 +75,11 @@ class Movimiento(models.Model):
         return f'Movimiento de {self.usuario} para {self.producto} a las {self.hora_entrega}'
 
 class DevolucionProducto(models.Model):
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     codigo_producto = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"Devolución de {self.producto} - Código: {self.codigo_producto}"
 
 class Historial(models.Model):
     

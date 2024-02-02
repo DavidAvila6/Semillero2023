@@ -72,8 +72,12 @@ class EntregaProductoForm(forms.ModelForm):
         self.fields['producto'].queryset = productos_disponibles
 
 class DevolucionProductoForm(forms.ModelForm):
-    codigo_producto = forms.CharField(widget=forms.TextInput(attrs={'autofocus': 'autofocus'}))
-    
     class Meta:
         model = DevolucionProducto
-        fields = ['codigo_producto']
+        fields = ['producto']
+
+    def __init__(self, *args, **kwargs):
+        super(DevolucionProductoForm, self).__init__(*args, **kwargs)
+        # Filtrar los productos que actualmente no están disponibles
+        productos_no_disponibles = Producto.objects.filter(disponible=False)
+        self.fields['producto'].queryset = productos_no_disponibles

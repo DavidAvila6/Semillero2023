@@ -1,0 +1,35 @@
+/* historial.css */
+
+.products-container {
+    width: 92%;
+    margin-left: 4%;
+    margin-bottom: 3%;
+    border-radius: 20px;
+    overflow: hidden; /* Asegura que los bordes redondos se apliquen correctamente */
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    overflow: hidden; /* Asegura que los bordes redondos se apliquen correctamente */
+    background-color: #fff;
+}
+
+.history-table th, .history-table td {
+    border: 1px #fff; /* Cambiado a blanco para que coincida con el fondo */
+    padding: 8px;
+    text-align: left;
+}
+
+.history-table th {
+    background-color: var(--primary-color); /* Utiliza la variable --primary-color para el fondo del encabezado */
+    color: #fff; /* Texto en el encabezado en color blanco */
+}
+
+.devolucion {
+    /* Agrega estilos adicionales para 'Devolución' si es necesario */
+    color: red;
+}

@@ -3,38 +3,48 @@
 {% block title %}Información de Movimiento{% endblock %}
 
 {% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/informacion_movimientos.css' %}">
+
+<h2>Información Movimiento</h2>
 <div class="info-container">
-        <h1 class="info-heading">Información de Movimiento</h1>
+    <div class="info-card">
+        <h2 class="info-heading">
+            <span class="icon-cards-info"><i class="bx bx-user"></i></span> Información del Usuario
+            <hr>
+        </h2>
+        <ul class="info-list">
+            <li><strong>Nombre:</strong> {{ movimiento.usuario.nombre }}</li>
+            <li><strong>Carrera:</strong> {{ movimiento.usuario.carrera }}</li>
+            <li><strong>Carnet:</strong> {{ movimiento.usuario.carnet }}</li>
+            <li><strong>Correo:</strong> {{ movimiento.usuario.correo_electronico }}</li>
+        </ul>
+    </div>
 
-            <div class="info-section">
-                <h2 class="section-heading">Información del Usuario</h2>
-                <ul class="info-list">
-                    <li><strong>Nombre:</strong> {{ movimiento.usuario.nombre }}</li>
-                    <li><strong>Carrera:</strong> {{ movimiento.usuario.carrera }}</li>
-                    <li><strong>Carnet:</strong> {{ movimiento.usuario.carnet }}</li>
-                    <li><strong>Correo Electrónico:</strong> {{ movimiento.usuario.correo_electronico }}</li>
-                </ul>
-            </div>
+    <div class="info-card">
+        <h2 class="info-heading">
+            <span class="icon-cards-info"><i class="bx bx-package"></i></span> Información del Producto
+            <hr>
+        </h2>
+        <ul class="info-list">
+            <li><strong>Nombre del Producto:</strong> {{ movimiento.producto.nombre }}</li>
+            <li><strong>Marca:</strong> {{ movimiento.producto.marca }}</li>
+            <li><strong>Código de Barras:</strong> {{ movimiento.producto.codigo }}</li>
+        </ul>
+    </div>
 
-            <div class="info-section">
-                <h2 class="section-heading">Información del Producto</h2>
-                <ul class="info-list">
-                    <li><strong>Nombre del Producto:</strong> {{ movimiento.producto.nombre }}</li>
-                    <li><strong>Marca:</strong> {{ movimiento.producto.marca }}</li>
-                    <li><strong>Código de Barras:</strong> {{ movimiento.producto.codigo }}</li>
-                </ul>
-            </div>
+    <div class="info-card">
+        <h2 class="info-heading">
+            <span class="icon-cards-info"><i class="bx bx-calendar"></i></span> Detalles del Movimiento
+            <hr>
+        </h2>
+        <ul class="info-list">
+            <li><strong>Fecha de Entrega:</strong> {{ movimiento.hora_entrega }}</li>
+            <li><strong>Comentario de Entrega:</strong> {{ movimiento.comentario }}</li>
+        </ul>
+    </div>
+</div>
 
-            <div class="info-section">
-                <h2 class="section-heading">Detalles del Movimiento</h2>
-                <ul class="info-list">
-                    <li><strong>Fecha de Entrega:</strong> {{ movimiento.hora_entrega }}</li>
-                    <li><strong>Comentario de Entrega:</strong> {{ movimiento.comentario }}</li>
-
-                </ul>
-            </div>
-        </div>
-    </div><br><br>
-        <a href="{% url 'lista_movimientos' %}" class="button">Volver a la Lista de Movimientos</a>
-    
+<br><br>
+<a href="{% url 'lista_movimientos' %}" class="button-go-to-home">Volver a la Lista de Movimientos</a>
 {% endblock %}

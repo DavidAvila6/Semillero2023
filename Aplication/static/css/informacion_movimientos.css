@@ -1,0 +1,48 @@
+.info-container {
+    display: flex;
+    margin-bottom: 20px;
+    width: 93%;
+    margin-left: 4%;
+    margin-top: 2%;
+}
+
+.info-card {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+}
+
+.info-heading {
+    color: var(--primary-color);
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.info-heading hr {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #ddd;
+    margin: 0 10px;
+}
+
+.info-list {
+    list-style: none;
+    padding: 0;
+}
+
+.info-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.icon-cards-info {
+    margin-right: 10px;
+    font-size: 24px;
+}

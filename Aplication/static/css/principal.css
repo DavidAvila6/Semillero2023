@@ -26,6 +26,7 @@
     width: 300px; 
     height: 350px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Agrega sombra */
+    margin-left: 10%;
 }
 
 .dark-blue-bg {

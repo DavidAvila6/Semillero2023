@@ -163,34 +163,43 @@ def entregar_producto(request):
         form = EntregaProductoForm()
 
     return render(request, 'pages/productos/entregar_producto.html', {'form': form, 'mensaje': mensaje})
-                  
+           
 def devolver_producto(request):
+    mensaje = None
+
     if request.method == 'POST':
         form = DevolucionProductoForm(request.POST)
         if form.is_valid():
-            codigo_producto = form.cleaned_data['codigo_producto']
-            
-            # Verifica si el código del producto está en la lista de movimientos
+            producto_devuelto = form.cleaned_data['producto']
+
             try:
-                movimiento = Movimiento.objects.get(producto__codigo=codigo_producto)
-                movimiento.delete()  # Elimina el registro de movimiento
-                # Crear un nuevo objeto de Historial con la misma información
+                movimiento = Movimiento.objects.get(producto=producto_devuelto)
+                usuario = movimiento.usuario
+
+                # Elimina el registro de movimiento
+                movimiento.delete()
+
+                # Crea un nuevo objeto de Historial con la información de la devolución
                 historial = Historial(
-                    usuario=movimiento.usuario, 
-                    producto=movimiento.producto, 
+                    usuario=usuario,
+                    producto=producto_devuelto,
                     tipo='Devolucion',
                     fecha_movimiento=movimiento.hora_entrega)
-                
-                # Guardar el objeto de Historial en la base de datos
+
+                # Actualiza el estado del producto a disponible
+                producto_devuelto.disponible = True
+                producto_devuelto.save()
+
+                # Guarda el objeto de Historial en la base de datos
                 historial.save()
-                return redirect('lista_movimientos')
+
+                mensaje = 'Producto devuelto con éxito.'
             except Movimiento.DoesNotExist:
-                # El código del producto no se encontró en los movimientos
-                return render(request, 'pages/productos/devolver_producto.html', {'form': form, 'error': 'Producto no encontrado en la lista de movimientos'})
+                mensaje = 'Producto no encontrado en la lista de movimientos'
     else:
         form = DevolucionProductoForm()
-    
-    return render(request, 'pages/productos/devolver_producto.html', {'form': form})
+
+    return render(request, 'pages/productos/devolver_producto.html', {'form': form, 'mensaje': mensaje})
 
 def lista_movimientos(request):
     movimientos = Movimiento.objects.all()
@@ -209,23 +218,6 @@ def historial(request):
 def informacion_historial(request, historial_id):
     historial = get_object_or_404(Historial, pk=historial_id)  # Asegúrate de importar el modelo Historial
     return render(request, 'pages/movimientos/informacion_historial.html', {'historial': historial})
-
-def iniciar_sesion(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            usuario = form.get_user()
-            auth_login(request, usuario)
-            messages.success(request, f'Bienvenido, {usuario.username}!')
-            return redirect('principal')  # Corregido el nombre de la vista principal
-    else:
-        form = AuthenticationForm()
-    return render(request, 'auth/login.html', {'form': form})
-
-def cerrar_sesion(request):
-    auth_logout(request)
-    messages.info(request, '¡Has cerrado sesión exitosamente!')
-    return redirect('login')  
 
 def registrar_usuario(request):
     if request.method == 'POST':

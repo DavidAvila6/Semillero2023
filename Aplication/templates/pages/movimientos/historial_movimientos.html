@@ -5,23 +5,27 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/historial.css' %}">
-<h1>Historial de Movimientos</h1>
-    <div class="products-container">
-        
-        <div class="movement-list">
+<h2>Historial de Movimientos</h2>
+<div class="products-container">
+    <table class="history-table">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Usuario</th>
+                <th>Producto</th>
+                <th>Fecha de Movimiento</th>
+            </tr>
+        </thead>
+        <tbody>
             {% for movimiento in historial %}
-            <a href="{% url 'informacion_historial' movimiento.id %}" class="buttonl{% if movimiento.tipo == 'Devolución' %} devolucion{% endif %}">
-                <strong>Tipo:</strong> {{ movimiento.tipo }}<br>
-                <strong>Usuario:</strong> {{ movimiento.usuario.username }}<br>
-                <strong>Producto:</strong> {{ movimiento.producto.nombre }}<br>
-                <strong>Fecha de Movimiento:</strong> {{ movimiento.fecha_movimiento }}
-                
-            </a>
-            <br><br><br>
-        {% endfor %}
-        
-        </div>
-    </div>
-        <a href="{% url 'principal' %}" class="button">Ir a la Página Principal</a>
-    
+                <tr>
+                    <td class="{% if movimiento.tipo == 'Devolución' %}devolucion{% endif %}">{{ movimiento.tipo }}</td>
+                    <td>{{ movimiento.usuario.nombre }}</td>
+                    <td>{{ movimiento.producto.nombre }}</td>
+                    <td>{{ movimiento.fecha_movimiento }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

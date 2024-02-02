@@ -4,18 +4,30 @@
 
 {% block content %}
 {% load static %}
-<div class="container">
-    <h1>Devolver Producto</h1>
+<link rel="stylesheet" type="text/css" href="{% static 'css/devolver_producto.css' %}">
+
+<div class="card">
+    <h2 class="center-text">
+        <span class="icon"><i class='bx bxs-box'></i></span> Devolver Producto
+    </h2>
     <form method="post">
         {% csrf_token %}
-        <img id="imagen-producto" src="{% static 'img/Ingreseproducto.png' %}" alt="Producto" style="width: 400px; height: 400px;"><br>
-        {{ form.codigo_producto }}
-        <br>
-        <button type="submit" class="button">Devolver Producto</button><br><br>
+
+        <div class="form-group">
+            <label for="producto">
+                <span class="icon"><i class='bx bxs-shopping-cart'></i></span> Seleccione un Producto:
+            </label>
+            <div class="input-container">
+                <i class="input-icon fas fa-shopping-cart"></i>
+                {{ form.producto }}
+            </div>
+        </div>
+
+        <div class="error-message">{{ form.errors.producto }}</div>
+        <p>{{ mensaje|default:"" }}</p>
+        <button type="submit">
+            <span class="icon"><i class='bx bx-check'></i></span> Devolver Producto
+        </button>
     </form>
-    {% if error %}
-        <p class="error">{{ error }}</p>
-    {% endif %}
-    <a href="{% url 'lista_movimientos' %}" class="button">Ir a la Lista de Movimientos</a>
 </div>
 {% endblock %}
