@@ -5,17 +5,16 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/principal.css' %}">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-
-<h2>Dashboard</h2>
+<div class="products-container">
+<h2>Funciones Principales</h2>
 <div class="button-container">
     <a href="{% url 'entregar_producto' %}" class="button-card">
         <div class="card dark-blue-bg">
             <i class='bx bx-devices card-icon white-text'></i>
             <div class="card-text">
-                <h3 class="bold-text">Prestamo de Producto</h3>
+                <h3 class="bold-text">Préstamo de Producto</h3>
                 <p>Realiza préstamos de productos.</p>
             </div>
-          
         </div>
     </a>
 
@@ -23,10 +22,9 @@
         <div class="card dark-blue-bg">
             <i class='bx bx-undo card-icon white-text'></i>
             <div class="card-text">
-                <h3 class="bold-text">Devolucion de Producto</h3>
+                <h3 class="bold-text">Devolución de Producto</h3>
                 <p>Devuelve productos previamente prestados.</p>
             </div>
-           
         </div>
     </a>
 
@@ -37,7 +35,6 @@
                 <h3 class="bold-text">Registrar Estudiante</h3>
                 <p>Agrega nuevos estudiantes al sistema.</p>
             </div>
-            
         </div>
     </a>
 
@@ -48,10 +45,35 @@
                 <h3 class="bold-text">Verificar Movimientos</h3>
                 <p>Revisa el historial de movimientos realizados.</p>
             </div>
-           
         </div>
     </a>
 </div>
+</div>
 
-
+<!-- Visualización de las últimas 10 filas del historial -->
+<div class="products-container">
+<div class="history-container">
+    <h2>Últimas 10 Filas del Historial</h2>
+    <table class="history-table">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Usuario</th>
+                <th>Producto</th>
+                <th>Fecha de Movimiento</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movimiento in ultimas_10_filas_historial %}
+                <tr>
+                    <td class="{% if movimiento.tipo == 'Devolución' %}devolucion{% endif %}">{{ movimiento.tipo }}</td>
+                    <td>{{ movimiento.usuario.nombre }}</td>
+                    <td>{{ movimiento.producto.nombre }}</td>
+                    <td>{{ movimiento.fecha_movimiento }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
 {% endblock %}

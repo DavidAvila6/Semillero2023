@@ -1,17 +1,8 @@
-from io import BytesIO
-from django.http import JsonResponse
-from django.shortcuts import render,HttpResponse,redirect
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import login as auth_login, logout as auth_logout
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import render,redirect
+from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import get_object_or_404, redirect, render
 from django.shortcuts import render, redirect
-from django.views import View
-from django.template.loader import get_template  # Para la exportación PDF
-from openpyxl import Workbook
 from django.contrib import messages
-from django.contrib.auth.views import LoginView
 from Semillero import settings
 from .models import Historial, Movimiento, Producto, Usuario
 from .forms import DevolucionProductoForm, UsuarioForm,ProductoForm,EntregaProductoForm,Movimiento
@@ -71,7 +62,9 @@ def listar_usuarios(request):
     return render(request, 'pages/usuarios/lista_usuarios.html', {'usuarios': usuarios})
 
 def principal(request):
-    return render(request, 'pages/principal/principal.html')
+    # Obtener las últimas 10 filas del historial
+    ultimas_10_filas_historial = Historial.objects.all().order_by('-fecha_movimiento')[:10]
+    return render(request, 'pages/principal/principal.html', {'ultimas_10_filas_historial': ultimas_10_filas_historial})
 
 def informacion_usuario(request, usuario_id):
     usuario = get_object_or_404(Usuario, pk=usuario_id)
@@ -247,16 +240,3 @@ def editar_producto(request, producto_id):
         form = ProductoForm(instance=producto)
 
     return render(request, 'pages/productos/editar_producto.html', {'form': form, 'producto': producto})
-
-def principal_view(request):
-    # Obtener datos para el gráfico
-    tipos_historial = ['Entrega', 'Devolución']
-    cantidad_movimientos = Historial.objects.values('tipo').annotate(count=Count('tipo')).order_by('tipo')
-
-    # Pasar datos al contexto
-    context = {
-        'tipos_historial': tipos_historial,
-        'cantidad_movimientos': [item['count'] for item in cantidad_movimientos],
-    }
-
-    return render(request, 'pages/principal/principal.html', context)
