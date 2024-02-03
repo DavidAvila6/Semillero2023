@@ -65,13 +65,21 @@ def listar_usuarios(request):
 def principal(request):
     # Obtener las últimas 10 filas del historial
     ultimas_10_filas_historial = Historial.objects.all().order_by('-fecha_movimiento')[:10]
+    
+    # Calcula el total de usuarios, productos y movimientos
+    total_usuarios = Usuario.objects.count()
+    total_productos = Producto.objects.count()
+    total_movimientos = Movimiento.objects.count()
 
     # Implementa la función obtener_datos_para_grafico para obtener los datos necesarios
     historial_series = obtener_datos_para_grafico()
 
     context = {
         'ultimas_10_filas_historial': ultimas_10_filas_historial,
-        'historial_series': historial_series
+        'historial_series': historial_series,
+        'total_usuarios': total_usuarios,
+        'total_productos': total_productos,
+        'total_movimientos': total_movimientos,
     }
 
     return render(request, 'pages/principal/principal.html', context)

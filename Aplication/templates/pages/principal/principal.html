@@ -6,6 +6,34 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<!-- Visualización de recuento de usuarios, productos y movimientos -->
+
+<div class="small-cards-container">
+    <div class="small-card">
+        <i class="bx bx-user-circle card-icon-small"></i>
+        <div class="card-text">
+            <h3 class="bold-text">Usuarios</h3>
+            <p>Total: {{ total_usuarios }}</p>
+        </div>
+    </div>
+
+    <div class="small-card">
+        <i class="bx bx-box card-icon-small"></i>
+        <div class="card-text">
+            <h3 class="bold-text">Productos</h3>
+            <p>Total: {{ total_productos }}</p>
+        </div>
+    </div>
+
+    <div class="small-card">
+        <i class="bx bx-transfer card-icon-small"></i>
+        <div class="card-text">
+            <h3 class="bold-text">Movimientos</h3>
+            <p>Total: {{ total_movimientos }}</p>
+        </div>
+    </div>
+</div>
+
 
 <div class="products-container">
 <h2>Funciones Principales</h2>
@@ -79,44 +107,4 @@
 </div>
 </div>
 
-<!-- Gráfico de pastel -->
-<div class="chart-container">
-    <canvas id="lineChart"></canvas>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Obtén los datos desde el contexto de Django
-        var historialSeries = {{ historial_series|safe }};
-        
-        // Formatear los datos para que Chart.js los pueda manejar
-        var labels = historialSeries.labels;
-        var data = historialSeries.datasets[0].data;  // Solo tomamos el primer conjunto de datos
-
-        // Configuración del gráfico de pastel
-        var ctx = document.getElementById('pieChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: labels,
-                datasets: [{
-                    data: data,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        // Agrega más colores según necesites
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        // Agrega más colores según necesites
-                    ],
-                    borderWidth: 1
-                }]
-            }
-        });
-    });
-</script>
 {% endblock %}
