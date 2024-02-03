@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import get_object_or_404, redirect, render
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from Aplication.utils import obtener_datos_para_grafico
 from Semillero import settings
 from .models import Historial, Movimiento, Producto, Usuario
 from .forms import DevolucionProductoForm, UsuarioForm,ProductoForm,EntregaProductoForm,Movimiento
@@ -64,7 +65,16 @@ def listar_usuarios(request):
 def principal(request):
     # Obtener las últimas 10 filas del historial
     ultimas_10_filas_historial = Historial.objects.all().order_by('-fecha_movimiento')[:10]
-    return render(request, 'pages/principal/principal.html', {'ultimas_10_filas_historial': ultimas_10_filas_historial})
+
+    # Implementa la función obtener_datos_para_grafico para obtener los datos necesarios
+    historial_series = obtener_datos_para_grafico()
+
+    context = {
+        'ultimas_10_filas_historial': ultimas_10_filas_historial,
+        'historial_series': historial_series
+    }
+
+    return render(request, 'pages/principal/principal.html', context)
 
 def informacion_usuario(request, usuario_id):
     usuario = get_object_or_404(Usuario, pk=usuario_id)
@@ -210,18 +220,6 @@ def historial(request):
 def informacion_historial(request, historial_id):
     historial = get_object_or_404(Historial, pk=historial_id)  # Asegúrate de importar el modelo Historial
     return render(request, 'pages/movimientos/informacion_historial.html', {'historial': historial})
-
-def registrar_usuario(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            usuario = form.save()
-            auth_login(request, usuario)
-            messages.success(request, f'Bienvenido, {usuario.username}! Te has registrado exitosamente.')
-            return redirect('pages/principal/principal.html')  # Ajusta según el nombre de tu vista principal
-    else:
-        form = UserCreationForm()
-    return render(request, 'auth/registro.html', {'form': form})
 
 def eliminar_producto(request, producto_id):
     producto = get_object_or_404(Producto, id=producto_id)

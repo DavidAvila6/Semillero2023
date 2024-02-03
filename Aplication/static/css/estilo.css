@@ -74,3 +74,16 @@ h2 {
     margin-bottom: 10px;
     margin-top: 2%;
 }
+
+.products-container {
+    width: 100%;
+    margin-left: 2.5%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 20px;
+    overflow: hidden; /* Asegura que los bordes redondos se apliquen correctamente */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    background-color: #fff;
+    padding: 20px;
+}

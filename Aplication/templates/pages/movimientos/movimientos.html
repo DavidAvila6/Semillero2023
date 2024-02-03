@@ -6,6 +6,7 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/principal.css' %}">
 
+<div class="products-container">
 <h2>Opciones de Movimientos</h2>
 <div class="button-container">
     <a href="{% url 'lista_movimientos' %}" class="button-card">
@@ -27,6 +28,6 @@
             </div>
         </div>
     </a>
-    <!-- Puedes agregar más botones de movimiento aquí según sea necesario -->
+</div>
 </div>
 {% endblock %}

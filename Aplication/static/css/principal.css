@@ -96,8 +96,3 @@ h3 .bold-text{
     background-color: var(--primary-color); /* Utiliza la variable --primary-color para el fondo del encabezado */
     color: #fff; /* Texto en el encabezado en color blanco */
 }
-
-.devolucion {
-    /* Agrega estilos adicionales para 'Devolución' si es necesario */
-    color: red;
-}

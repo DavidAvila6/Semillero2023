@@ -6,6 +6,7 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/principal.css' %}">
 
+<div class="products-container">
 <h2>Opciones de Usuarios</h2>
 <div class="button-container">
     <a href="{% url 'agregar_usuario' %}" class="button-card">
@@ -37,5 +38,6 @@
             </div>
         </div>
     </a>
+</div>
 </div>
 {% endblock %}
